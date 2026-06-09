@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Gestor</title>
+    <link rel="icon" href="ASSETS/FAVICON O GESTOR.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="options-menu">        
+            <nav class="nav-menu">
+                <a class="nav-link" href="#logo">INÍCIO</a>
+                <a class="nav-link" href="#sobre">SOBRE</a>
+                <a class="nav-link" href="#contato">CONTATO</a>
+                <button class="login-button" href="#login">LOGIN</button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="logo-img">    
+            <picture>
+                <img id="logo-o-gestor" 
+                src="ASSETS/LOGO O GESTOR TRANSPARENTE.png"
+                alt="Logo O Gestor">
+            </picture>
+        </div>    
+    </main>
+
+    <section class="about-section" id="sobre">
+        <div class="about">         
+            <h3>SOBRE O GESTOR</h3>
+                <p>O Gestor é uma plataforma inovadora de <strong>gestão empresarial</strong>, projetada para ajudar empresas a otimizar seus processos, melhorar a eficiência e alcançar seus objetivos de negócios. Com uma interface intuitiva e recursos avançados, O Gestor é a solução ideal para empresas de todos os tamanhos e segmentos no <strong>gerenciamento de dados analíticos e financeiros</strong> relacionados ao <strong>gerenciamento de frota</strong>.</p>
+        </div>
+    </section>
+
+    <section class="fuctionalities-section">
+        <div class="fuctionalities">
+            <h4>Com o O Gestor, você pode:</h4>
+                <ul>
+                    <li>Gerenciar sua frota de veículos de forma eficiente;</li>
+                    <li>Analisar dados financeiros e operacionais;</li>
+                    <li>Tomar decisões baseadas em informações precisas e atualizadas;</li>
+                </ul>
+        
+                        <p>O gerenciamento de frota com o O Gestor permite que você tenha <strong>controle total sobre seus veículos, motoristas e rotas,</strong> otimizando custos e aumentando a produtividade.</p>
+        </div>
+    </section>
+
+    <section class="reports-section">
+        <div class="reports">
+            <h4>RELATÓRIOS DETALHADOS</h4>
+                <p id="p-reports">Além disso, o O Gestor oferece diversos relatórios detalhados com base na análise dos dados coletados onde são sintetizados e apresentados de forma clara e objetiva. Dentre alguns deles:
+                    <ul>
+                        <li><h5>Relatórios de Eficiência de Custos e Consumo</h5></li>
+                            <p class="texts-li">Esses relatórios fornecem insights sobre o consumo de combustível, manutenção e outros custos operacionais, permitindo que as empresas identifiquem áreas de melhoria e otimizem seus gastos.</p>
+                        <li><h5>Relatórios de Gestão da Manutenção</h5></li>
+                            <p class="texts-li">Esses relatórios permitem acompanhar o histórico de manutenção dos veículos, agendar serviços preventivos e otimizar o processo de gestão da manutenção. O objetivo aqui é transformar a manutenção corretiva (gerada por quebras) em manutenção preventiva (programada).</p>
+                        <li><h5>Relatórios de Produtividade e Utilização da Frota</h5></li>
+                            <p class="texts-li">Ajuda a entender se a empresa realmente precisa do tamanho atual da frota ou se os ativos estão ociosos.</p>
+                                <ul>
+                                    <li class="li-intern"><b>Taxa de Utilização dos Veículos:</b> Percentual de tempo em que o veículo está efetivamente em operação em comparação com o tempo em que está disponível. Se a taxa for consistentemente baixa, pode ser hora de reduzir ou remanejar a frota.</li>
+                                    <li class="li-intern"><b>Desvio de Rota:</b> Cruza o caminho planejado pelo roteirizador com o trajeto real percorrido, apontando ineficiências ou uso indevido do veículo.</li>
+                                </ul>   
+                    </ul>
+        </div> 
+    </section>
+    
+    <section class="contact-section" id="contato">
+        <div class="form-contact">    
+            <h3>CONTATO</h3>
+                <p>Caso tenha dúvidas ainda, preencha os campos abaixo que um de nossos colaboradores entrará em contato para atender suas necessidades e esclarecer sobre como o O Gestor pode ajudar sua empresa a atingir os seus objetivos!</p>
+        
+                    <form
+                    action="mailto:dev.marcelosantanasf@gmail.com"
+                    method="post"
+                    enctype="multipart/form-data">
+
+                        <label>
+                            Nome:
+                            <input
+                            type="text"
+                            name="name"
+                            placeholder="Insira seu nome">
+                        </label>
+                            <br>
+                        <label>
+                            Telefone:
+                            <input
+                            type="tel"
+                            name="telefone"
+                            placeholder="Insira seu WhatsApp">
+                        </label>
+                            <br>
+                        <label>
+                            Email:
+                            <input
+                            type="email"
+                            name="email"
+                            placeholder="Insira seu email">
+                        </label>
+                            <br>
+                        <label>
+                            Qual o motivo de seu contato?
+                            <checkboxes class="check-contact">
+                                <input class="input-check" type="checkbox" name="motivo" value="duvidas"> <span>Dúvidas</span> 
+                                <input class="input-check" type="checkbox" name="motivo" value="interesse"> <span>Interesse</span>
+                                <input class="input-check" type="checkbox" name="motivo" value="outro"> <span>Outro</span>
+                            </checkboxes>
+                        </label>
+
+                        <button id="button-submit">ENVIAR</button>
+                    </form>
+        </div>
+    </section>
+
+    <section class="login-section"></section>
+        <div class="form-login">
+            <h3 class="h3-end">LOGIN</h3>
+                <form class="form-end">
+                    <label for="email">Email:</label>
+                        <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required>
+                    
+                    <label for="password">Senha:</label>
+                        <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        required>
+
+                    <button id="button-submit" type="submit">ENTRAR</button>
+                </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p id="p-footer">&copy; 2026 O Gestor. Todos os direitos reservados. Desenvolvido por &copy; DEV Marcelo Santana.</p>
+        </div>
+    </footer>
+</body>
+</html>
