@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Tektur', sans-serif;
+    color: white;
+}
+
+body{
+    background-color: black;
+}
+
+h1, h2, h3, h4, h5 {
+    text-transform: uppercase;
+}
+
+p {
+    text-align: justify;
+    line-height: 1.5;
+}
+
+video {
+    cursor: pointer;
+    max-width: 100%;
+    height: auto;
+    margin-top: -105px;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    gap: 15px;
+}
+
+.options-menu {
+    padding: 15px;
+    text-align: center;
+    line-height: 30px;
+    letter-spacing: 1px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    z-index: 1000;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.nav-menu a:hover { 
+    color: #d8d9ed; 
+}
+
+.nav-menu a:active { 
+    color: #676677; 
+}
+
+#logo-dev-marcelo{
+    max-width: 300px;
+    height: auto;
+    background: transparent;
+}
+
+.img-top{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0 0 0;
+}
+
+#inicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 0;
+}
+
+#objetivos{
+    text-align: justify;
+}
+
+.logo-text {
+    text-align: center;
+    gap: 15px;
+}
+
+.logo-img img {
+    max-width: 100%;
+    height: auto;
+}
+
+.form-contact {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#nome, #email, #telefone, #mensagem {
+    width: 100%;
+    background-color: #111;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid white;
+}
+
+#mensagem {
+    height: 100px;
+    resize: vertical;
+}
+
+#button-submit {
+    width: 130px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid white;
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    font-weight: bolder;
+    cursor: pointer;
+    align-self: center;
+}
+
+#button-submit:hover { 
+    opacity: 0.8; 
+}
+
+#button-submit:active { 
+    opacity: 0.5; 
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0px 20px;
+    width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+    .nav-menu a {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    section {
+        padding: 30px 15px;
+    }
+
+    .img-top {
+        margin-top: 20%;
+    }
+}
