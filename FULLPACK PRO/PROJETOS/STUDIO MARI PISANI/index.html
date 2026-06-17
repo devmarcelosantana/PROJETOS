@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <header>
         
@@ -20,22 +21,22 @@
         </div>
 
         <div class="sidebar-class">
-            <h2>MENU</h2>
+            <h2 id="title-sidebar">MENU</h2>
             <nav class="sidebar-menu">
-                <a href="#inicio">ÍNICIO</a>
-                <a href="#sobre-nós">SOBRE NÓS</a>
+                <a class="link-sidebar" href="#inicio">ÍNICIO</a>
+                <a class="link-sidebar" href="#sobre-nós">SOBRE NÓS</a>
                     <div class="dropdown">
-                        <a href="#serviços" class="dropdown">SERVIÇOS</a>
+                        <a class="link-sidebar" href="#serviços" class="dropdown-link">SERVIÇOS</a>
                             <div class="dropdown-content">
-                                <a href="#coloração">COLORAÇÃO</a>
-                                <a href="#descoloração">DESCOLORAÇÃO</a>
-                                <a href="#alisamentos">ALISAMENTOS</a>
-                                <a href="#cortes">CORTES</a>
-                                <a href="#terapia-capilar">TERAPIA CAPILAR</a>
+                                <a class="link-sidebar" href="#coloração">COLORAÇÃO</a>
+                                <a class="link-sidebar" href="#descoloração">DESCOLORAÇÃO</a>
+                                <a class="link-sidebar" href="#alisamentos">ALISAMENTOS</a>
+                                <a class="link-sidebar" href="#cortes">CORTES</a>
+                                <a class="link-sidebar" href="#terapia-capilar">TERAPIA CAPILAR</a>
                             </div>
                     </div>
-                <a href="#feedback">FEEDBACKS</a>
-                <a href="#contato">CONTATO</a>
+                <a class="link-sidebar" href="#agenda">AGENDA</a>
+                <a class="link-sidebar" href="#contato">CONTATO</a>
             </nav>
         </div>
     </aside>
@@ -62,14 +63,150 @@
         </div>
 
         <div id="serviços">
-            <p>Somos especialistas em:</p>
+            <h4>SERVIÇOS</h4>
+            <h5>Somos especialistas em:</h5>
             <ul>
-                <il><b>Coloração & Descoloração:</b> Louros radiantes, morenas iluminadas e transformações seguras.</il>
-                <il><b>Cortes & Alisamentos:</b> Designs modernos e realinhamento dos fios com alta durabilidade e brilho.</il>
-                <il><b>Terapia Capilar:</b> Tratamentos profundos e personalizados para a saúde do couro cabeludo e dos fios.</il>
+                <li><b>Coloração & Descoloração:</b> Louros radiantes, morenas iluminadas e transformações seguras.</li>
+                <li><b>Cortes & Alisamentos:</b> Designs modernos e realinhamento dos fios com alta durabilidade e brilho.</li>
+                <li><b>Terapia Capilar:</b> Tratamentos profundos e personalizados para a saúde do couro cabeludo e dos fios.</li>
             </ul>
+
+        <div id="coloração">
+            <h5>COLORAÇÃO</h5>
+                <p>
+                Quer dar mais vida e brilho para o seu cabelo? A coloração certa realça a sua beleza e levanta a autoestima!
+                Trabalhamos com as melhores marcas do mercado para entregar a cor dos seus sonhos sem abrir mão da saúde dos seus fios.
+                Utilizamos técnicas modernas de coloração e produtos de alta qualidade para garantir que seu cabelo mude de cor, mas continue saudável, brilhante e cheio de vida.
+                <br><br>
+                <b>Especialidades:</b>
+                    <ul>
+                        <li>Mechas e Luzes (Morena Iluminada/Loiras)</li>
+                        <li>Coloração Global</li>
+                        <li>Retoque de Raiz</li>
+                        <li>Cores Fantasia</li>
+                    </ul>
+                </p>
+        </div>
+
+        <div id="descoloração">
+            <h5>DESCOLORAÇÃO</h5>
+                <p>
+                Mudar o visual e clarear os fios é maravilhoso, mas o verdadeiro segredo de um loiro incrível é a saúde do cabelo.
+                Aqui, o processo de descoloração é feito com todo o cuidado que você precisa. Utilizamos produtos de alta performance, protetores de fibra (Plex) e fazemos uma avaliação minuciosa do seu fio antes de começar, garantindo um clareamento seguro, fios íntegros e muito brilho!
+                </p>
+        </div>
+
+        <div id="alisamentos">
+            <h5>ALISAMENTOS</h5>
+                <p>
+                Muitas pessoas têm receio de fazer alisamentos por medo de quebrar ou ressecar os fios. Mas o segredo de um liso perfeito está no diagnóstico correto e na escolha do produto certo para o seu tipo de cabelo!
+                Nós do Studio Mari Pisani, antes de qualquer química, avaliamos a saúde do seu fio para garantir que o resultado seja um cabelo liso, saudável, sedoso e com movimento natural. Nada de fios rígidos ou danificados!
+                Dê adeus ao trabalho diário de modelar o cabelo e conquiste a praticidade que você merece.
+                <br><br>
+                <h5>Nossos Serviços de Alisamentos:</h5>
+                    <ul>
+                        <li>Progressiva Sem Formol (Liso extremo e seguro)</li>
+                        <li>Botox Capilar (Redução de volume e muita hidratação)</li>
+                        <li>Selagem Térmica (Alinhamento e combate ao frizz)</li>
+                    </ul>
+                </p>
+        </div>
+
+        <div id="cortes">
+            <h5>CORTES</h5>
+                <p>
+                Você sabia que um bom corte não serve apenas para tirar as pontinhas, mas sim para moldar o seu rosto, trazer leveza e expressar a sua personalidade?
+                Seja para mudar radicalmente com um curtinho moderno, dar movimento com camadas e franja, ou apenas manter a saúde dos fios com um corte preciso, eu estou aqui para criar o visual perfeito para você!
+                Pode ficar tranquila! Aqui no Studio Mari Pisani, nós conversamos antes de a tesoura entrar em ação. Se você quer apenas tirar as pontas duplas e ressecadas para o cabelo crescer mais forte e saudável, eu respeito o seu comprimento.
+                Agora, se o seu desejo é uma transformação completa para começar uma nova fase, nós planejamos juntas o corte que mais combina com o formato do seu rosto e o seu estilo de vida.
+                Cabelo bonito é cabelo bem cuidado e com corte em dia!
+                <br><br>
+                    <h5>ESTILOS QUE FAZEM SUCESSO POR AQUI:</h5>
+                        <ul>
+                            <li>Bob / Long Bob (Elegantes e atemporais)</li>
+                            <li>Cortes em Camadas / Shaggy Hair (Volume e movimento)</li>
+                            <li>Pixie / Curtos Modernos (Práticos e cheios de atitude)</li>
+                            <li>Franjas (A moldura perfeita para o rosto)</li>
+                        </ul>
+                </p>
+        </div>
+
+        <div id="terapia-capilar">
+            <h5>TERAPIA CAPILAR</h5>
+                <p>
+                Cabelo bonito começa pelo couro cabeludo! Você já conhece a Terapia Capilar?
+                Muitas vezes investimos em máscaras caras, mas esquecemos que a saúde do cabelo nasce na raiz. Se você nota que seu cabelo está caindo mais do que o normal, não cresce, está muito oleoso ou com aspecto sem vida, o seu couro cabeludo pode estar precisando de socorro!
+                A Terapia Capilar é um tratamento focado em cuidar da saúde do couro cabeludo e da fibra dos fios, tratando disfunções de dentro para fora.
+                <br><br>
+                <h5>PARA QUEM É INDICADO?</h5>
+                    <ul>
+                        <li>Queda capilar e falhas</li>
+                        <li>Oleosidade excessiva ou caspa</li>
+                        <li>Fios quebradiços e danificados por químicas</li>
+                        <li>Couro cabeludo sensível ou com coceira</li>
+                    </ul>
+                Aqui no salão, realizamos uma avaliação personalizada para entender as necessidades do seu fio e devolver a força, o brilho e o crescimento saudável que ele merece.
+                A Terapia Capilar vai muito além de uma hidratação comum: ela trata a saúde do seu couro cabeludo, estimula o crescimento e fortalece os fios desde a raiz. É o verdadeiro detox que o seu cabelo precisa para crescer forte e saudável!
+                O acúmulo de resíduos de produtos, poluição, suor e oleosidade pode entupir os bulbos capilares, enfraquecendo os fios e causando queda ou caspa. É por isso que o seu cabelo, às vezes, parece que "não responde" a nenhum tratamento.
+                A Terapia Capilar entra em ação para desintoxicar, nutrir e oxigenar o couro cabeludo, criando o ambiente perfeito para o seu cabelo crescer forte, encorpado e com um brilho incrível.
+                <b>Tratamentos personalizados para a sua real necessidade.</b>
+                </p>
+        </div>
+
+        <div id="agenda">
+            <h5>AGENDA</h5>
+                <p>
+                Seu momento de autocuidado está esperando por você!
+                O dia a dia corrido muitas vezes faz a gente adiar o cuidado com nós mesmas, não é? Mas o seu cabelo é a sua identidade e merece aquela atenção especial que transforma não só o visual, mas também a autoestima!
+                Seja para renovar o corte, mudar a cor, trazer mais brilho com um tratamento ou garantir a praticidade do liso perfeito, nós estamos prontas para te atender e entregar o resultado dos seus sonhos.
+                Que tal reservar um tempinho na sua agenda para cuidar de você esta semana?
+                Escolha o melhor dia e horário para a sua rotina e vamos agendar o seu momento.
+                </p>    
+
+            <div class="form-container">
+                <form>
+                    <label for="data"><h5>REALIZE SEU AGENDAMENTO:</h5></label>
+                    <br>
+                    <input type="text" id="nome-agendamento" name="nome" placeholder="Insira seu nome">
+                    <br>
+                    <input type="date" id="data" name="data" min="" max="">
+                    <br>
+                    <input type="time" id="horário" name="horário" min="09:00" max="18:00">
+                    <br>
+
+                <h5>SELECIONE O SERVIÇO DESEJADO</h5>
+                    <label>
+                        <input type="checkbox" name="serviços" value="Coloração">Coloração
+                    </label>
+                    <br>
+                    <label>
+                        <input type="checkbox" name="serviços" value="Descoloração">Descoloração
+                    </label>
+                    <br>
+                    <label>
+                        <input type="checkbox" name="serviços" value="Alisamento">Alisamento
+                    </label>
+                    <br>
+                    <label>
+                        <input type="checkbox" name="serviços" value="Corte">Corte
+                    </label>
+                    <br>
+                    <label>
+                        <input type="checkbox" name="serviços" value="Terapia Capilar">Terapia Capilar
+                    </label>
+                    <br>
+                    <input id="button-submit" type="submit" value="Enviar">
+                </form>
+            </div>
         </div>
     </main>
 
+    <footer id="contato">
+        <div class="redes-sociais">
+            <a href="https://www.instagram.com/studiomaripisani/" target="_blank" rel="noopener noreferrer"><img src="ASSETS/LOGO INSTAGRAM.png" alt="logo-instagram" width="50px">
+            <a href="https://wa.me/5511970710715" target="_blank" rel="noopener noreferrer"><img src="ASSETS/LOGO WHATSAPP.png" alt="logo-whatsapp" width="65px">
+        </div>
+        <p>&copy; 2026 Studio Mari Pisani. Todos os direitos reservados. Desenvolvido por &copy; DEV Marcelo Santana.</p>
+    </footer>
 </body>
 </html>

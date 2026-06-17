@@ -1,0 +1,152 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+}
+
+body{
+    background-color: #4F162C;
+    color: #CDA66B;
+}
+
+h1, h2, h3, h4, h5, h6{
+    text-transform: uppercase;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 110px;
+    height: 100vh;
+    background-color: #4F162C;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transform: translateX(-60px); 
+    transition: transform 0.4s ease;
+    border-right: 2px solid #CDA66B;
+}
+
+.sidebar-menu{
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.sidebar:hover {
+    transform: translateX(0);
+}
+
+.sidebar::before {
+    content: "☰";
+    position: absolute;
+    top: 20px;
+    right: 10px; 
+    font-size: 30px;
+    color: #CDA66B;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar:hover::before {
+    opacity: 0;
+}
+
+#title-sidebar{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.img-logo-menu, .sidebar-class {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.img-logo-menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-top: 10px;
+}
+
+.sidebar:hover .img-logo-menu,
+.sidebar:hover .sidebar-class {
+    opacity: 1;
+    visibility: visible;
+}
+
+main, footer {
+    margin-left: 70px; 
+    padding: 20px;
+    transition: margin-left 0.4s ease; 
+}
+
+.sidebar:hover ~ main,
+.sidebar:hover ~ footer {
+    margin-left: 120px; 
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: block;
+    position: absolute;
+    left: 105%;
+    top: 0;
+    background-color: #CDA66B;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 15px;
+    padding: 5px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0s linear 0.4s;
+}
+
+.dropdown-content a {
+    color: #4F162C;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #EDEDED;
+    border-radius: 15px; 
+}
+
+.dropdown:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0 ease, visibility 0s linear 0.4s;
+}
+
+.dropdown-content :active {
+    opacity: 0.8;
+}
+
+.link-sidebar {
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
+    color: #CDA66B;
+    padding: 5px 10px;
+    margin-top: 10px;
+}
+
+.link-sidebar:hover{
+    background-color: #EDEDED;
+    border-radius: 10px;
+}
+
+.link-sidebar:active{
+    opacity: 0.6;
+}
