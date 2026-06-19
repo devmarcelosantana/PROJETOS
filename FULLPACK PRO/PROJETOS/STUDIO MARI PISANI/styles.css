@@ -12,6 +12,7 @@ body{
 
 h1, h2, h3, h4, h5, h6{
     text-transform: uppercase;
+    margin: 10px 5px;
 }
 
 .sidebar {
@@ -124,7 +125,7 @@ main, footer {
 .dropdown:hover .dropdown-content {
     opacity: 1;
     visibility: visible;
-    transition: opacity 0 ease, visibility 0s linear 0.4s;
+    transition: opacity 0s ease, visibility 0s linear 0.4s;
 }
 
 .dropdown-content :active {
@@ -149,4 +150,169 @@ main, footer {
 
 .link-sidebar:active{
     opacity: 0.6;
+}
+
+#inicio{
+    text-align: center;
+    h2{
+        font-size: 30px;
+    }
+    h3{
+        font-size: 25px;
+    }
+}
+
+.carousel-container {
+    max-width: 600px;       
+    margin: 40px auto;       
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;           
+    overflow: hidden;        
+    border-radius: 10px;
+}
+
+.slide {
+    display: none;           
+    width: 100%;
+    height: 100%;
+    object-fit: cover;       
+    position: absolute;      
+}
+
+.fade {
+    animation: fadeEffect 1.5s;
+}
+
+@keyframes fadeEffect {
+    from { opacity: 0.4; } 
+    to { opacity: 1; }
+}
+
+p{
+    text-align: justify;
+    margin: 10px 15px;
+}
+
+li{
+    margin: 8px 35px;
+}
+
+input{
+    background-color: #CDA66B;
+    color: #EDEDED;
+    width: 200px;
+    height: 30px;
+    text-align: center;
+    margin: 3px 0;
+    border: 2px solid #EDEDED;
+    border-radius: 20px;
+}
+
+input::placeholder {
+    color: #EDEDED; 
+    opacity: 0.7;
+}
+
+input::-webkit-input-placeholder {
+    color: #EDEDED;
+}
+
+input:-ms-input-placeholder {
+    color: #EDEDED;
+}
+
+#nome-agendamento:focus,
+#data:focus,
+#horário:focus {
+    border: 2px solid #4F162C;
+    color: #4F162C;
+    outline: none;
+    box-shadow: 0px 0px 8px rgba(205, 166, 107, 0.6);
+    transition: all 0.3s ease;
+}
+
+.form-container form label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    margin: 2px 0;
+    cursor: pointer;
+    color: #CDA66B;
+}
+
+.form-container form input[type="checkbox"] {
+    width: auto;
+    height: auto;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.form-container form input[type="submit"] {
+    cursor: pointer;
+}
+
+.form-container form input[type="submit"]:hover{
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.form-container form input[type="submit"]:active{
+    opacity: 0.8;
+}
+
+.form-container form input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #CDA66B;
+    border-radius: 4px;
+    background-color: transparent;
+    display: inline-grid;
+    place-content: center;
+    cursor: pointer;
+    margin-right: 8px;
+    transition: all 0.2s ease;
+}
+
+
+.form-container form input[type="checkbox"]:checked {
+    background-color: #CDA66B;
+    border-color: #CDA66B;
+}
+
+.form-container form input[type="checkbox"]:checked::before {
+    content: "✓";
+    color: #4F162C;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+footer{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    padding: 30px 20px;
+}
+
+.redes-sociais {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.redes-sociais a {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.redes-sociais :hover{
+    transform: scale(1.1);
 }
