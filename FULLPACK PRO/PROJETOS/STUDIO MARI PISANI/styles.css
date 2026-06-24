@@ -316,3 +316,7 @@ footer{
 .redes-sociais :hover{
     transform: scale(1.1);
 }
+
+.redes-sociais :active{
+    transform: scale(0.95);
+}

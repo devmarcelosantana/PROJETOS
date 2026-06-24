@@ -63,14 +63,17 @@ section {
     font-size: 18px;
     font-weight: 500;
     cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
 .nav-menu a:hover { 
-    color: #d8d9ed; 
+    color: #d8d9ed;
+    transform: scale(1.1);
 }
 
 .nav-menu a:active { 
-    color: #676677; 
+    color: #676677;
+    transform: scale(0.95);
 }
 
 #logo-dev-marcelo{
@@ -111,11 +114,32 @@ section {
     gap: 10px;
 }
 
+#img-habilities1, #img-habilities2, #img-habilities3 {
+    transition: transform 0.3s ease;
+}
+
+#img-habilities1:hover, #img-habilities2:hover, #img-habilities3:hover {
+    transform: scale(1.1);
+}
+
 #p-linkedin{
     text-align: center;
 }
+
 #logo-linkedin, #meu-linkedin{
     display: block;
+}
+
+#meu-linkedin {
+    transition: transform 0.3s ease;
+}
+
+#meu-linkedin:hover {
+    transform: scale(1.1);
+}
+
+#meu-linkedin:active {
+    transform: scale(0.95);
 }
 
 #inicio {
@@ -158,6 +182,13 @@ section {
     border: 1px solid white;
 }
 
+#nome:focus, #email:focus, #telefone:focus, #mensagem:focus {
+    border: 2px solid white;
+    outline: none;
+    box-shadow: 0px 0px 8px #D8D8D8;
+    transition: all 0.2s ease;
+}
+
 #mensagem {
     height: 100px;
     resize: vertical;
@@ -174,14 +205,17 @@ section {
     font-weight: bolder;
     cursor: pointer;
     align-self: center;
+    transition: transform 0.3s ease;
 }
 
 #button-submit:hover { 
     opacity: 0.8; 
+    transform: scale(1.1);
 }
 
 #button-submit:active { 
     opacity: 0.5; 
+    transform: scale(0.95);
 }
 
 footer {
@@ -194,8 +228,16 @@ footer {
     width: 100%;
 }
 
-.redes-sociais:active{
-    transform:scale(1.1)
+.redes-sociais a {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.redes-sociais a:hover {
+    transform: scale(1.1);
+}
+.redes-sociais a:active{
+    transform: scale(0.95);
 }
 
 @media screen and (max-width: 600px) {
