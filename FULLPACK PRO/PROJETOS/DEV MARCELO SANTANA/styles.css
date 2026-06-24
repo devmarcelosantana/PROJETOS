@@ -194,6 +194,10 @@ footer {
     width: 100%;
 }
 
+.redes-sociais:active{
+    transform:scale(1.1)
+}
+
 @media screen and (max-width: 600px) {
     .nav-menu a {
         font-size: 16px;
