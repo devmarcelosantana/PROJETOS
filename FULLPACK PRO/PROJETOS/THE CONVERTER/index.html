@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&display=swap" rel="stylesheet">
+    <title>The Converter</title>
+</head>
+
+<body>
+    <header>
+        <div class="img-logo">
+            <img id="logo-tc" src="ASSETS/logo.png" alt="logo-the-converter">
+        </div>
+        <div class="text-header">
+            <h1>The Converter</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="menu">
+            <div class="converter-to">
+                <label for="coin">Converter <b>de</b></label>
+                    <select id="coin-to" name="coin-select">
+                        <option value="selecione">Selecione</option>
+                        <option value="dólar-americano">Dólar Americano</option>
+                        <option value="dólar-canadense">Dólar Canadense</option>
+                        <option value="euro">Euro</option>
+                        <option value="libra-esterlina">Libra Esterlina</option>
+                        <option value="real">Real</option>
+                    </select>
+            </div>
+            
+            <div class="converter-from">
+                <label for="coin">Converter <b>para</b></label>
+                    <select id="coin-from" name="coin-select">
+                        <option value="selecione">Selecione</option>
+                        <option value="dólar-americano">Dólar Americano</option>
+                        <option value="dólar-canadense">Dólar Canadense</option>
+                        <option value="euro">Euro</option>
+                        <option value="libra-esterlina">Libra Esterlina</option>
+                        <option value="real">Real</option>
+                    </select>
+            </div>
+
+            <div class="desired-value">
+                <label for="value">Valor</label>
+                    <input id="valor" name="input-value" type="text" placeholder="Valor para Conversão">
+            </div>
+
+            <div class="button-converter">
+                <button type="button">Converter</button>
+            </div>
+
+            <div class="div-result">
+                <div class="conversion-result">
+                    <div class="resume-value">
+                        <img class="icon-flags-from" src="ASSETS/icon-interrogation.png" alt="real-brasil" width="50px">
+                        <p class="text-conversion" id="text-result-from">Selecione</p>
+                        <input id="resume-value-to" type="text" placeholder="0,00" disabled>
+                    </div>
+
+                    <img id="icon-converter" src="ASSETS/logo.png" alt="icon-nation-coin-to">
+                    
+                    <div id="result">
+                        <img class="icon-flags-to" src="ASSETS/icon-interrogation.png" alt="dolar-americano" width="50px">
+                        <p class="text-conversion" id="text-result-to">Selecione</p>
+                        <input id="resume-value-from" placeholder="Valor Convertido" disabled>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>&copy; 2026. Desenvolvido por DEV Marcelo Santana.</footer>
+</body>
+</html>
