@@ -5,7 +5,7 @@
 <h3 align=center>TECNOLOGIAS UTILIZADAS</h3>
 <p align=center>
 <img src="https://github.com/octavio-oi/Language-Logo-List/blob/main/background%20white/small/CSS.png?raw=true" alt="logo-css" width="50px">
-<img src="https://github.com/octavio-oi/Language-Logo-List/blob/main/background%20white/small/HTML.png?raw=true" alt="logo-html" width="50px" width= 400px />
+<img src="https://github.com/octavio-oi/Language-Logo-List/blob/main/background%20white/small/HTML.png?raw=true" alt="logo-html" width="50px"/>
 </p>
 <br>
 <h3 align=center>Visual do Site</h3>
