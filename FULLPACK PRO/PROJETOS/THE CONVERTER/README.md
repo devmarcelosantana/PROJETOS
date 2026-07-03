@@ -33,7 +33,7 @@
 <img src="https://github.com/octavio-oi/Language-Logo-List/blob/main/background%20white/small/JAVASCRIPT.png?raw=true" alt="logo-javascript" width="50px">
 </p>
 
-<p>Acesse o aplicativo direto pelo link:
-<br><b>https://devmarcelosantana.github.io/PROJETOS/FULLPACK%20PRO/PROJETOS/THE%20CONVERTER/<b></b>
+<p>Acesse o aplicativo direto pelo link:</p>
+<p align=center><b>https://devmarcelosantana.github.io/PROJETOS/FULLPACK%20PRO/PROJETOS/THE%20CONVERTER/</b></p>
 
 <p align=center><b>&copy; 2026 DEV Marcelo Santana. Todos os direitos reservados.</b></p>
