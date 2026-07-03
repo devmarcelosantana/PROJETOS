@@ -34,6 +34,6 @@
 <p align=justify><b>Obs.: O site exposto no campo do meu "portifólio" das imagens acima é o site da Nike, não sendo um site real do meu portifólio real, pois o <i>"O Gestor"</i>, projeto de autoria minha, ainda encontra-se em desenvolvimento.</b></p>
 <br>
 
-<p align=justify>Acesse diretamente o meu site através do link:
-<br><b>https://devmarcelosantana.github.io/PROJETOS/FULLPACK%20PRO/PROJETOS/DEV%20MARCELO%20SANTANA/</b></p>
+<p align=justify>Acesse diretamente o meu site através do link:</p>
+<p align=center><b>https://devmarcelosantana.github.io/PROJETOS/FULLPACK%20PRO/PROJETOS/DEV%20MARCELO%20SANTANA/</b></p>
 <p align=center><b>&copy; 2026 DEV Marcelo Santana. Todos os direitos reservados.</b></p>
