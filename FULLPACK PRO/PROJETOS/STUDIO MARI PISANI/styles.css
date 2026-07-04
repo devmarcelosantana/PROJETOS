@@ -78,12 +78,6 @@ h1, h2, h3, h4, h5, h6{
     visibility: visible;
 }
 
-main, footer {
-    margin-left: 70px; 
-    padding: 20px;
-    transition: margin-left 0.4s ease; 
-}
-
 .sidebar:hover ~ main,
 .sidebar:hover ~ footer {
     margin-left: 120px; 
@@ -152,25 +146,43 @@ main, footer {
     opacity: 0.6;
 }
 
+main, footer {
+    margin-left: 70px; 
+    padding: 20px;
+    transition: margin-left 0.4s ease; 
+}
+
 #inicio{
     text-align: center;
-    h2{
-        font-size: 30px;
+    h1{
+        font-family: "Fuggles", cursive;
+        text-transform: none;
+        font-size: 90px;
+        margin: 0 0;
+        font-weight: 400;
     }
-    h3{
+    h2{
+    
+        text-transform: none;
+        font-weight: 400;
         font-size: 25px;
+        font-weight: 400;
+        margin-top: -20px;
+        letter-spacing: 1px;
     }
 }
 
 .carousel-container {
-    max-width: 600px;       
-    margin: 40px auto;       
+    max-width: 100%;       
+    margin: 20px auto;       
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 400px;           
+    height: 500px;           
     overflow: hidden;        
-    border-radius: 10px;
+    border-radius: 20px;
+    position: relative;
+    border: 2px solid #CDA66B
 }
 
 .slide {
