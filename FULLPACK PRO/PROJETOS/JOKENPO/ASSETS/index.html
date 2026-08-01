@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    <title>Jokenpô</title>
+</head>
+<body>
+    <header>
+        <nav class="navMenu">
+            <a href="#placar" id="navPlacar">Placar</a>
+            <a href="#" id="navJogar">Jogar</a>
+            <a href="#sobre" id="navSobre">Sobre</a>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="game-container">
+            <div class="reception">
+                <h1>JokenPô</h1>
+                <img id="imgLogo" src="LOGO.png" alt="logoJokenpo" width="150px">
+            </div>
+
+            <div class="buttonPlay">
+                <button id="rock" type="button"><img src="PEDRA.png" alt="pedra" width="70px">Pedra</button>
+                <button id="paper" type="button"><img src="PAPEL.png" alt="papel" width="70px">Papel</button>
+                <button id="scissors" type="button"><img src="TESOURA.png" alt="tesoura" width="70px">Tesoura</button>
+            </div>
+
+            <div class="battleArena">
+                <img id="machineChoiceImg" src="" alt="Escolha da Yuki" width="90px" style="display: none;">
+            </div>
+
+            <div class="result" id="placar">
+                <input id="inputResult" type="text" placeholder="Resultado" disabled>
+            </div>
+
+            <div class="scoreboard">
+                <p>Você:
+                <br><input class="yourScore" type="number" placeholder="0" disabled></p>
+
+                <p>Yuki:
+                <br><input class="machineScore" type="number" placeholder="0" disabled></p>
+            </div>
+        </div>
+
+        <div class="about" id="sobre">
+            <h3>História do Jokenpô</h3>
+            <br>
+            <p>A história do Jokenpô (o nosso famoso "Pedra, Papel e Tesoura") é muito mais antiga e fascinante do que a maioria das pessoas imagina. Embora a palavra "Jokenpô" venha do japonês, o jogo nasceu na China antiga.
+            <br><br>
+            Aqui está a trajetória de como essa brincadeira atravessou milênios e conquistou o mundo:
+            <br><br>
+            <b>1. A Origem Chinesa (Século III a.C.)</b>
+            <br>
+            A primeira menção registrada a um jogo desse estilo está no livro Wuzazu, escrito durante a Dinastia Ming, mas referente à Dinastia Han (202 a.C. – 220 d.C.).
+            Na época, o jogo era chamado de Shoushiling (手勢令) e não usava os elementos de hoje. Em vez de pedra, papel e tesoura, os gestos representavam animais:
+            <br><br>
+            <b>- Sapo (indicado pelo polegar);<br>
+            - Cobra (indicado pelo dedo indicador);<br>
+            - Centopéia (indicada pelo dedo mínimo).</b>
+            <br><br>
+            A lógica circular já era a mesma: a cobra come o sapo, o sapo come a centopeia e a centopeia assusta a cobra.
+            <br><br>
+            <b>2. A Chegada ao Japão e a Criação do "Jokenpô"</b>
+            <br>
+            Por volta do século XVII, o jogo viajou da China para o Japão, onde ganhou grande popularidade e passou por diversas variações conhecidas genericamente como Sansukumi-ken (jogos de três elementos que se neutralizam).
+
+            Uma das versões japonesas mais populares no século XIX usava a dinâmica de:
+            <br><br>
+            <b>- Fox/Raposa (Kitsune);<br>
+            - Lorde/Líder da aldeia (Nanushi);<br>
+            - Caçador (Ryoushi).</b>
+            <br><br>
+            Eventualmente, no final do século XIX, surgiu a versão Sanshoku-ken, que finalmente introduziu os símbolos que conhecemos hoje: Jan (Pedra), Ken (Ponte/Papel) e Pon (Tesoura) — derivando na expressão moderna Jokenpô ( じゃんけんぽん, Jankenpon).
+            <br><br>
+            <b>3. A Conquista do Ocidente (Século XX)</b>
+            <br>
+            O jogo só cruzou o oceano rumo ao Ocidente no início do século XX, levado pelo aumento do contato entre o Japão e os países ocidentais.
+            <br>
+            <b>Na Europa:</b> Em 1920, jornais britânicos já explicavam as regras do "Zwick-Zwack-Zwick" ou "Paper, Scissors, Stone".
+            <br>
+            <b>Nos EUA:</b> Ganhou força nas décadas de 1930 e 1940, sendo popularizado como "Rock, Paper, Scissors".
+            <br>
+            <b>No Brasil:</b> O nome "Jokenpô" se consolidou principalmente devido à forte imigração japonesa, especialmente no estado de São Paulo, mantendo a pronúncia bem próxima do original japonês.</p>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026. Todos os direitos reservados. Desenvolvido por &copy;DEV Marcelo Santana.
+    </footer>
+</body>
+</html>
