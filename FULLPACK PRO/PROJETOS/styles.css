@@ -1,0 +1,1502 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Special Elite', cursive;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #BF8E63;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+#linkIfood, #linkWhats {
+    position: fixed;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff; 
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-in-out;
+}
+
+#linkIfood { bottom: 20px; }
+#linkWhats { bottom: 80px; }
+
+#linkIfood:hover, #linkWhats:hover {
+    transform: scale(1.1);
+}
+
+#linkIfood img, #linkWhats img {
+    display: block;
+    width: 30px;
+    height: auto;
+}
+
+#titleMenu{
+    text-align: center;
+    margin: 10px;
+    color:#BF8E63;
+    text-transform: uppercase;
+    font-family: Roboto, sans-serif;
+    font-weight: 800;
+}
+
+#menu {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 60px;
+    width: calc(100% - 60px);
+    height: 100vh;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    z-index: 900;
+    overflow-y: auto;
+    padding: 20px 40px 40px 40px;
+    transform: translateY(100%);
+    visibility: hidden; 
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s;
+}
+
+#menu > div[id] {
+    display: block; 
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    height: 0;
+    overflow: hidden;
+}
+
+#menu > div[id].active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    height: auto;
+    overflow: visible;
+}
+
+#menuText{
+    text-align: justify;
+    font-family: Roboto, sans-serif;
+    color: #BF8E63;
+    padding: 20px;
+}
+
+#optionsMenu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    background-color: #1a1a1a;
+    transition: all 0.3s ease;
+}
+
+#optionsMenu a {
+    text-decoration: none;
+    color: #5DB24D;
+    font-size: 0.9em;
+    padding: 8px 12px;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+}
+
+#optionsMenu a:hover{
+    transform: scale(1.2);
+}
+
+#optionsMenu a:active {
+    transform: scale(1.1);
+}
+
+#menu.active #optionsMenu,
+#menu:target #optionsMenu,
+.cardapio-open #optionsMenu {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #1a1a1a;
+    padding: 15px 0;
+    margin-top: 0;
+}
+
+#menu.active, #sectionContact.active {
+    transform: translateY(0);
+    visibility: visible;
+}
+
+#menu.active,
+.cardapio-open {
+    padding: 20px;
+}
+
+#cardapio.active,
+.cardapio-open {
+    padding-top: 80px;
+}
+
+#rodizio,
+#burguer,
+#porcoes,
+#bebidas,
+#pratos,
+#sobremesas,
+#drinks {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    background-color: #1a1a1a;
+    padding: 100px 40px 40px 40px;
+    z-index: 90;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#rodizio.active,
+#burguer.active,
+#porcoes.active,
+#pratos.active,
+#bebidas.active,
+#sobremesas.active,
+#drinks.active {
+    display: block;
+    transform: translateY(0); 
+}
+/* ================= HEADER & SIDEBAR ================= */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+}
+
+#logoHiGuys {
+    display: block;
+    height: auto;
+}
+
+aside.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 60px; 
+    background-color: #1a1a1a;
+    z-index: 1000;
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+    border-right: 2px solid #BF8E63;
+    will-change: width;
+}
+
+.sidebar::before {
+    content: "☰";
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 60px;
+    text-align: center;
+    font-size: 30px;
+    color: #BF8E63;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.sidebarClass {
+    width: 100%;
+    padding: 30px 10px 20px 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-10px);
+    transition: opacity 0.4s ease 0.1s, visibility 0.4s ease 0.1s, transform 0.4s ease 0.1s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+aside.sidebar:hover {
+    width: 180px;
+}
+
+aside.sidebar:hover .sidebarClass {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0); /* Desliza suavemente para a posição original */
+}
+
+aside.sidebar:hover::before {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebarClass nav {
+    width: 100%;
+}
+
+.linkSidebar {
+    display: block;
+    white-space: nowrap;
+    color: #5DB24D;
+    text-decoration: none;
+    padding: 12px 15px;
+    transition: background 0.2s, transform 0.2s;
+    font-family: Roboto, sans-serif;
+    font-weight: 800;
+    margin-top: 15px;
+}
+
+.linkSidebar:hover {
+    background-color: #333;
+    transform: scale(1.1);
+    border: 1px solid #5DB24D;
+}
+
+.linkSidebar:active {
+    transform: scale(0.95);
+}
+
+#logoMenuFinal {
+    display: block;
+    height: auto;
+    margin-top: 20px;
+}
+
+.content-wrapper {
+    flex: 1;
+    margin-left: 60px;
+    width: calc(100% - 60px);
+    transition: margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+aside.sidebar:hover ~ .content-wrapper {
+    margin-left: 180px;
+    width: calc(100% - 180px);
+}
+
+.aboutContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px 10%;
+}
+
+.videoContainerSpace {
+    position: relative;
+    width: 280px;
+    aspect-ratio: 9 / 16;
+}
+
+.videoFade {
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    pointer-events: none;
+}
+
+.videoFade.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#video1, #video2 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 3px solid #7B5A3F;
+    margin-right: 60px;
+}
+
+#about {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+#titleAbout {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+#aboutText {
+    text-align: justify;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.secundPart{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #7B5A3F;
+    padding: 40px 10%;
+    gap: 40px;
+    width: 100%;
+}
+
+.videoContainerFood {
+    width: 280px;
+    aspect-ratio: 9 / 16;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#video3 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 3px solid #BF8E63;
+    margin-right: 60px;
+}
+
+.businessHours {
+    flex: 1;
+    
+}
+
+#hours {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+#hoursText {
+    text-align: left;
+    line-height: 1.8;
+}
+
+.days {
+    text-transform: uppercase;
+    color: #1a1a1a;
+}
+
+/* ================= CARDAPIO (SECOES E OVERLAY) ================= */
+#menu, #sectionContact {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 60px;
+    width: calc(100% - 60px);
+    height: 100vh;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    z-index: 900;
+    overflow-y: auto;
+    padding: 40px;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#menu.active, #sectionContact.active {
+    transform: translateY(0);
+}
+
+aside.sidebar:hover ~ #menu,
+aside.sidebar:hover ~ #sectionContact,
+aside.sidebar:hover ~ .content-wrapper #menu {
+    left: 180px;
+    width: calc(100% - 180px);
+}
+
+.close-menu-btn {
+    background: transparent;
+    border: 2px solid #5DB24D;
+    color: #5DB24D;
+    padding: 8px 16px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.close-menu-btn:hover {
+    background-color: #5DB24D;
+    color: #1a1a1a;
+    transform: scale(1.05);
+}
+
+.linkMenu {
+    color: #5DB24D;
+    text-decoration: none;
+    padding: 10px 15px;
+    border: 1px solid #5DB24D;
+    border-radius: 5px;
+    transition: background 0.2s;
+}
+
+.linkMenu:hover {
+    background-color: #5DB24D;
+    color: #1a1a1a;
+}
+
+.linkMenu:active #menuText,
+.linkMenu:active #titleMenu {
+    display: none;
+}
+
+section[id^="options"], #sectionRodizio, #sectionContact {
+    padding: 40px 10%;
+}
+
+#titleRodizio {
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: underline;
+    font-family: Roboto, sans-serif;
+    color: #BF8E63;
+    position: absolute;
+    top: 100px;
+    left: 42%;
+    width: 50%;
+    padding: 0;
+    margin: 0;
+}
+
+#video4 {
+    max-width: 25%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 3px solid #BF8E63;
+    display: block;
+    position: absolute;
+    top: 100px;
+    left: 120px;
+    max-height: calc(100vh - 120px);
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+}
+
+#video4.fade-out {
+    opacity: 0;
+}
+
+#textGlobalRodizio {
+    text-align: justify;
+    font-family: Roboto, sans-serif;
+    color: #BF8E63;
+    display: block;
+    position: absolute;
+    top: 150px; 
+    left: 42%;
+    width: 50%;
+    margin: 0;
+}
+
+#burguer {
+    color: #BF8E63;
+    position: absolute;
+    min-height: 1800px;
+    padding-bottom: 40px;
+}
+
+#burguerTitle {
+    font-family: Roboto, sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: underline;
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#textBurguerGlobal {
+    font-family: Roboto, sans-serif;
+    text-align: justify;
+    margin: 10px 0;
+}
+
+.divBurguerGlobal {
+    position: absolute;
+    width: 450px;
+    height: 220px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    border: 2px solid #BF8E63;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #1a1a1a;
+    color: #BF8E63;
+    text-align: justify;
+    z-index: 1;
+    transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
+                    z-index 0.35s ease, 
+                    box-shadow 0.35s ease;
+}
+
+.divBurguerGlobal:hover {
+    height: 440px;
+    z-index: 99;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.85);
+}
+
+.divBurguerGlobal:hover img,
+.divBurguerGlobal .descriptionFood:hover ~ img,
+.divBurguerGlobal:has(.descriptionFood:hover) img {
+    height: 280px;
+}
+
+.divBurguerGlobal img {
+    width: 100%;
+    height: 120px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    border: 1px solid #BF8E63;
+    object-fit: cover;
+    flex-shrink: 0;
+    transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.divBurguerGlobal:hover img {
+    height: 260px;
+}
+
+.divBurguerGlobal a {
+    font-family: Roboto, sans-serif;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    color: #BF8E63;
+    margin-bottom: 5px;
+}
+
+#divBaconBurguer {
+    margin-top: 10px;
+    margin-right: calc(50% + 10px);
+}
+
+#divCapreseBurguer {
+    margin-top: 10px;
+    margin-left: calc(50% - 10px);
+}
+
+#divChickenBurguer {
+    margin-top: 280px;
+    margin-right: calc(50% + 10px);
+}
+
+#divJohnLennonBurguer {
+    margin-top: 280px;
+    margin-left: calc(50% - 10px);
+}
+
+#divSaladBurguer {
+    margin-top: 550px;
+    margin-right: calc(50% + 10px);
+}
+
+#divEggBurguer {
+    margin-top: 550px;
+    margin-left: calc(50% - 10px);
+}
+
+#divHiGuysBurguer {
+    margin-top: 820px;
+    margin-right: calc(50% + 10px);
+}
+
+#divPicanhaBurguer {
+    margin-top: 820px;
+    margin-left: calc(50% - 10px);
+}
+
+#divFitBurguer {
+    margin-top: 1090px;
+    margin-right: calc(50% + 10px);
+}
+
+#divQuatroQueijosBurguer {
+    margin-top: 1090px;
+    margin-left: calc(50% - 10px);
+}
+
+#divCostelaCrispyBurguer {
+    margin-top: 1360px;
+    margin-right: calc(50% + 10px);
+}
+
+#divMickJaggerVegetariano {
+    margin-top: 1360px;
+    margin-left: calc(50% - 10px);
+}
+
+#porcoes {
+    color: #BF8E63;
+    position: absolute;
+    padding-bottom: 40px;
+    width: 100%;
+    min-height: 100vh; 
+    background-color: #1a1a1a; 
+    padding-bottom: 40px;
+    z-index: 900;
+}
+
+#porcoesTitle {
+    font-family: Roboto, sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: underline;
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#textPorcoesGlobal {
+    font-family: Roboto, sans-serif;
+    text-align: justify;
+    margin: 10px 0;
+}
+
+.divPorcoesGlobal {
+    position: absolute;
+    width: 450px;
+    height: 220px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    border: 2px solid #BF8E63;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #1a1a1a;
+    color: #BF8E63;
+    text-align: justify;
+    z-index: 1;
+    transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
+                    z-index 0.35s ease, 
+                    box-shadow 0.35s ease;
+}
+
+.divPorcoesGlobal:hover {
+    height: 440px;
+    z-index: 99;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.85);
+}
+
+.divPorcoesGlobal:hover img,
+.divPorcoesGlobal .descriptionFood:hover ~ img,
+.divPorcoesGlobal:has(.descriptionFood:hover) img {
+    height: 280px;
+}
+
+.divPorcoesGlobal img {
+    width: 100%;
+    height: 120px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    border: 1px solid #BF8E63;
+    object-fit: cover;
+    flex-shrink: 0;
+    transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.divPorcoesGlobal:hover img {
+    height: 260px;
+}
+
+.divPorcoesGlobal a {
+    font-family: Roboto, sans-serif;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    color: #BF8E63;
+    margin-bottom: 5px;
+}
+
+.descriptionFood {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+#divBatataFrita {
+    margin-top: 10px;
+    margin-right: calc(50% + 10px);
+}
+
+#divFritasComCheddar {
+    margin-top: 10px;
+    margin-left: calc(50% + 10px);
+}
+
+#divAnelDeCebola { 
+    margin-top: 270px;
+    margin-left: calc(50% + 10px);
+}
+
+#divIscasDeMignon {
+    margin-top: 270px;
+    margin-right: calc(50% + 10px);
+}
+
+#pratos {
+    color: #BF8E63;
+    position: absolute;
+    top: 10px;
+    left: 60px;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #1a1a1a;
+    padding: 80px 20px 40px 20px;
+    box-sizing: border-box;
+    transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
+                width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 900;
+}
+
+#pratosTitle {
+    position: absolute;
+    top: 80px;
+    left: 60%;
+    text-align: center;
+    font-family: Roboto, sans-serif;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+#video5 {
+    max-width: 25%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 3px solid #BF8E63;
+    display: block;
+    position: absolute;
+    top: 100px;
+    left: 120px;
+    max-height: calc(100vh - 120px);
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+}
+
+#textGlobalPratos {
+    position: absolute;
+    top: 140px;
+    left: 40%;
+    width: 100%; /* Ocupa 80% do espaço disponível */
+    max-width: 50%;
+    font-family: Roboto, sans-serif;
+    text-align: justify;
+}
+
+.divPratoGlobal {
+    position: absolute; 
+    top: 130px; 
+    width: 25%; 
+    max-width: 420px;
+    min-width: 250px; 
+    height: 360px;
+    box-sizing: border-box;
+    border: 2px solid #BF8E63;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #1a1a1a;
+    color: #BF8E63;
+    text-align: justify;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.divPratoGlobal:hover {
+    height: 440px;
+    z-index: 99;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.85);
+}
+
+.divPratoGlobal:hover img,
+.divPratoGlobal .descriptionFood:hover ~ img,
+.divPratoGlobal:has(.descriptionFood:hover) img {
+    height: 280px;
+}
+
+.divPratoGlobal img {
+    width: 100%;
+    height: 120px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    border: 1px solid #BF8E63;
+    object-fit: cover;
+    flex-shrink: 0;
+    transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.divPratoGlobal:hover img {
+    height: 260px;
+}
+
+.divPratoGlobal a {
+    font-family: Roboto, sans-serif;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    color: #BF8E63;
+    margin-bottom: 5px;
+}
+
+#divSalmao {
+    margin-top: 70px;
+    right: calc(50% - 180px);
+}
+
+#divSurfAndTurf {
+    margin-top: 70px;
+    left: calc(50% + 210px);
+}
+
+
+#sobremesas {
+    color: #BF8E63;
+    position: absolute;
+    padding-bottom: 40px;
+    width: 100%;
+    min-height: 100vh; 
+    background-color: #1a1a1a; 
+    padding-bottom: 40px;
+    z-index: 900;
+}
+
+#sobremesaTitle {
+    font-family: Roboto, sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: underline;
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    right: 15%;
+}
+
+#textSobremesaGlobal {
+    font-family: Roboto, sans-serif;
+    text-align: justify;
+    margin: 10px 0;
+    display: block;
+    position: absolute;
+    max-width: 60%;
+    width: 100%;
+}
+
+.divSobremesaGlobal {
+    position: absolute;
+    width: 300px;
+    height: 320px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    border: 2px solid #BF8E63;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #1a1a1a;
+    color: #BF8E63;
+    text-align: justify;
+    z-index: 1;
+    transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
+                    z-index 0.35s ease, 
+                    box-shadow 0.35s ease;
+}
+
+.divSobremesaGlobal:hover {
+    height: 500px;
+    z-index: 99;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.85);
+}
+
+.divSobremesaGlobal:hover img,
+.divSobremesaGlobal .descriptionFood:hover ~ img,
+.divSobremesaGlobal:has(.descriptionFood:hover) img {
+    height: 280px;
+}
+
+.divSobremesaGlobal:hover video,
+.divSobremesaGlobal .descriptionFood:hover ~ video,
+.divSobremesaGlobal:has(.descriptionFood:hover) video {
+    height: 280px;
+}
+
+.divSobremesaGlobal img {
+    width: 100%;
+    height: 120px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    border: 1px solid #BF8E63;
+    object-fit: cover;
+    flex-shrink: 0;
+    transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.divSobremesaGlobal video {
+    width: 100%;
+    height: 120px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    border: 1px solid #BF8E63;
+    object-fit: cover;
+    flex-shrink: 0;
+    transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.divSobremesaGlobal:hover img {
+    height: 370px;
+}
+
+.divSobremesaGlobal:hover video {
+    height: 370px;
+}
+
+.divSobremesaGlobal a {
+    font-family: Roboto, sans-serif;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    color: #BF8E63;
+    margin-bottom: 5px;
+}
+
+#video6 {
+    max-width: 25%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 3px solid #BF8E63;
+    display: block;
+    position: absolute;
+    top: 100px;
+    right: 5%;
+    max-height: calc(100vh - 120px);
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+}
+
+#divTriffle {
+    margin-top: 70px;
+    right: calc(50% + 190px);
+}
+
+#divBanoffee {
+    margin-top: 70px;
+    left: calc(50% - 150px);
+}
+
+#drinks {
+    color: #BF8E63;
+    position: absolute;
+    padding-bottom: 40px;
+    width: 100%;
+    min-height: 100vh; 
+    background-color: #1a1a1a; 
+    padding-bottom: 40px;
+    z-index: 900;
+}
+
+#drinkTitle {
+    font-family: Roboto, sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: underline;
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    left: 15%;
+}
+
+#textDrinkGlobal {
+    font-family: Roboto, sans-serif;
+    text-align: justify;
+    margin: 10px 0;
+    display: block;
+    position: absolute;
+    max-width: 60%;
+    width: 100%;
+    right: 5%;
+}
+
+.divDrinkGlobal {
+    position: absolute;
+    width: 300px;
+    height: 320px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    border: 2px solid #BF8E63;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #1a1a1a;
+    color: #BF8E63;
+    text-align: justify;
+    z-index: 1;
+    transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
+                    z-index 0.35s ease, 
+                    box-shadow 0.35s ease;
+}
+
+.divDrinkGlobal:hover {
+    height: 500px;
+    z-index: 99;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.85);
+}
+
+.divDrinkGlobal:hover img,
+.divDrinkGlobal .descriptionFood:hover ~ img,
+.divDrinkGlobal:has(.descriptionFood:hover) img {
+    height: 280px;
+}
+
+.divDrinkGlobal:hover video,
+.divDrinkGlobal .descriptionFood:hover ~ video,
+.divDrinkGlobal:has(.descriptionFood:hover) video {
+    height: 280px;
+}
+
+.divDrinkGlobal img {
+    width: 100%;
+    height: 120px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    border: 1px solid #BF8E63;
+    object-fit: cover;
+    flex-shrink: 0;
+    transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.divDrinkGlobal video {
+    width: 100%;
+    height: 120px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    border: 1px solid #BF8E63;
+    object-fit: cover;
+    flex-shrink: 0;
+    transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.divDrinkGlobal:hover img {
+    height: 370px;
+}
+
+.divDrinkGlobal:hover video {
+    height: 370px;
+}
+
+.divDrinkGlobal a {
+    font-family: Roboto, sans-serif;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    color: #BF8E63;
+    margin-bottom: 5px;
+}
+
+#video7 {
+    max-width: 25%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 3px solid #BF8E63;
+    display: block;
+    position: absolute;
+    top: 150px;
+    margin-left: 5%;
+    max-height: calc(100vh - 120px);
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+}
+
+#contact {
+    color: #BF8E63;
+    position: absolute;
+    padding-bottom: 40px;
+    width: 100%;
+    min-height: 100vh; 
+    background-color: #1a1a1a; 
+    padding-bottom: 40px;
+    z-index: 900;
+}
+
+#reservaTitle {
+    font-family: Roboto, sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: underline;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin-left: 5%;
+}
+
+#contactTextGlobal {
+    font-family: Roboto, sans-serif;
+    text-align: justify;
+    display: block;
+    position: absolute;
+    max-width: 50%;
+    width: 100%;
+    margin-top: 5%;
+    margin-left: 35%
+}
+
+#video8 {
+    max-width: 25%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 3px solid #BF8E63;
+    display: block;
+    position: absolute;
+    top: 20px;
+    margin-left: 5%;
+    max-height: calc(100vh - 120px);
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+}
+
+#reserveWhats {
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    gap: 10px;
+    
+    position: absolute;
+    top: 90%;
+    left: 60%;
+    transform: translate(-50%, -50%); 
+    
+    background-color: #25D366;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    width: max-content;
+    border: 2px solid white;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                background-color 0.3s ease, 
+                box-shadow 0.3s ease;
+    will-change: transform;
+}
+
+#reserveWhats img,
+#reserveWhats svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+    flex-shrink: 0;
+}
+
+#reserveWhats:hover {
+    transform: translate(-50%, -50%) scale(1.08);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+}
+
+#reserveWhats:active {
+    transform: translate(-50%, -50%) scale(0.95);
+}
+/* ================= FOOTER ================= */
+footer {
+    width: 100%;
+    margin-top: 40px;
+    padding: 40px 10% 20px 10%;
+    background-color: #BF8E63;
+    color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    width: 100%;
+    gap: 30px;
+    align-items: start;
+}
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+}
+
+#contactTitle, #adressTitle {
+    font-size: 28px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.contactInfo {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+#iconTelephone {
+    display: block;
+    width: 30px;
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#dogFooter {
+    width: 180px;
+    height: auto;
+}
+
+.footer-address {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #7B5A3F;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.footer-bottom {
+    position: relative;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    width: 100%;
+    text-align: center;
+}
+
+.socialMedia {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.socialMedia a {
+    display: inline-block;
+    transition: transform 0.2s ease-in-out;
+}
+
+.socialMedia a:hover {
+    transform: scale(1.3);
+}
+
+.socialMedia a:active {
+    transform: scale(1.1);
+}
+
+.footer-bottom p {
+    font-size: 14px;
+    color: #1a1a1a;
+}
+
+/* ================= MEDIA QUERIES (RESPONSIVIDADE) ================= */
+/* TABLETS (Telas até 992px) */
+@media screen and (max-width: 992px) {
+    .aboutContainer, .secundPart {
+        padding: 30px 5%;
+    }
+
+    #menu, #sectionContact {
+        padding: 30px 20px;
+    }
+
+    #rodizio, #burguer, #porcoes, #pratos, #sobremesas, #drinks {
+        padding: 70px 20px 30px 20px;
+    }
+}
+
+/* DISPOSITIVOS MÓVEIS / CELULARES (Telas até 768px) */
+@media screen and (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    /* Ajuste da Sidebar para Mobile */
+    aside.sidebar {
+        width: 100%;
+        height: 50px;
+        border-right: none;
+        border-bottom: 2px solid #BF8E63;
+    }
+
+    aside.sidebar:hover {
+        width: 100%;
+        height: 220px;
+    }
+
+    .sidebar::before {
+        top: 8px;
+        left: 15px;
+        width: auto;
+    }
+
+    .sidebarClass {
+        padding: 10px;
+    }
+
+    .sidebarClass nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .linkSidebar {
+        margin-top: 0;
+        padding: 6px 10px;
+        font-size: 0.85em;
+    }
+
+    #logoMenuFinal {
+        display: none;
+    }
+
+    /* Wrapper do Conteúdo ajustado para Mobile */
+    .content-wrapper {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 50px;
+    }
+
+    aside.sidebar:hover ~ .content-wrapper {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    /* Menu Overlay e Contato em Fullscreen */
+    #menu, #sectionContact {
+        left: 0;
+        width: 100%;
+        top: 50px; 
+        height: calc(100vh - 50px);
+        transform: translateY(100%);
+        visibility: hidden;
+    }
+
+    #menu.active, #sectionContact.active {
+        transform: translateY(0);
+        visibility: visible;
+    }
+
+    /* Reorganização de Seções */
+    .aboutContainer {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    #aboutText {
+        text-align: left;
+    }
+
+    .secundPart {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #hours, #hoursText {
+        text-align: center;
+    }
+
+    .flex-content-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .media-side {
+        max-width: 100%;
+    }
+
+    /* Botões flutuantes para celular */
+    #linkIfood, #linkWhats {
+        right: 15px;
+        padding: 8px;
+    }
+
+    #linkIfood { bottom: 15px; }
+    #linkWhats { bottom: 70px; }
+
+    #linkIfood img, #linkWhats img {
+        width: 25px;
+    }
+}
+
+/* PEQUENOS SMARTPHONES (Telas até 480px) */
+@media screen and (max-width: 480px) {
+    #optionsMenu a {
+        font-size: 0.75em;
+        padding: 6px 8px;
+    }
+
+    #menu, #sectionContact {
+        left: 0;
+        width: 100%;
+        top: 50px;
+        height: calc(100vh - 50px);
+        visibility: hidden;
+    }
+    #menu.active, #sectionContact.active {
+        transform: translateY(0);
+        visibility: visible;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    #titleAbout, #hours, #contactTitle {
+        font-size: 24px;
+    }
+
+    .footer-address iframe {
+        height: 200px;
+    }
+}
