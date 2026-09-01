@@ -38,3 +38,16 @@ Um jogo interativo de **Jokenpô (Pedra, Papel e Tesoura)** desenvolvido com tec
 ---
 
 ## 📂 Mídias do Projeto
+<img width="960" height="445" alt="IMG1" src="https://github.com/user-attachments/assets/adcded26-ce55-49e0-92da-9a6304bd9b99" />
+
+<img width="960" height="445" alt="IMG2" src="https://github.com/user-attachments/assets/f37fe643-bccb-4990-8d9d-ce50c6cf345c" />
+
+Desenvolvido por Marcelo Santana.
+
+LinkedIn: linkedin.com/in/devmarcelosantana
+
+GitHub: @devmarcelosantana
+
+Projeto desenvolvido com foco no domínio de Manipulação de DOM, Eventos e Animações em JavaScript Puro.
+
+Acesse a plataforma do projeto diretamente através do link abaixo.
