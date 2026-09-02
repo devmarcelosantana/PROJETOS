@@ -38,9 +38,9 @@ Um jogo interativo de **Jokenpô (Pedra, Papel e Tesoura)** desenvolvido com tec
 ---
 
 ## 📂 Mídias do Projeto
-<img width="960" height="445" alt="IMG1" src="https://github.com/user-attachments/assets/adcded26-ce55-49e0-92da-9a6304bd9b99" />
+<img width="960" height="445" alt="IMG1" src="../MIDIAS PROJETO/IMG1.png"/>
 
-<img width="960" height="445" alt="IMG2" src="https://github.com/user-attachments/assets/f37fe643-bccb-4990-8d9d-ce50c6cf345c" />
+<img width="960" height="445" alt="IMG2" src="../MIDIAS PROJETO/IMG2.png" />
 
 Desenvolvido por Marcelo Santana.
 
