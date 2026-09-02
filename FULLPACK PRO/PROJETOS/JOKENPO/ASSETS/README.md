@@ -38,11 +38,13 @@ Um jogo interativo de **Jokenpô (Pedra, Papel e Tesoura)** desenvolvido com tec
 ---
 
 ## 📂 Mídias do Projeto
+
 <img width="960" height="445" alt="IMG1" src="../MIDIAS PROJETO/IMG1.png"/>
 
 <img width="960" height="445" alt="IMG2" src="../MIDIAS PROJETO/IMG2.png" />
 
-Desenvolvido por Marcelo Santana.
+
+Desenvolvido por DEV Marcelo Santana.
 
 LinkedIn: linkedin.com/in/devmarcelosantana
 
