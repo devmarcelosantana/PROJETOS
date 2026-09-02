@@ -53,3 +53,5 @@ GitHub: @devmarcelosantana
 Projeto desenvolvido com foco no domínio de Manipulação de DOM, Eventos e Animações em JavaScript Puro.
 
 Acesse a plataforma do projeto diretamente através do link abaixo.
+
+https://devmarcelosantana.github.io/PROJETOS/FULLPACK%20PRO/PROJETOS/JOKENPO/
