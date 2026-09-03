@@ -28,15 +28,6 @@ Um jogo interativo de **Jokenpô (Pedra, Papel e Tesoura)** desenvolvido com tec
 
 ---
 
-## 📂 Estrutura do Projeto
-
-```text
-├── index.html       # Estrutura principal da página e modais
-├── style.css        # Estilos, layout e animações CSS
-└── script.js        # Lógica do jogo, placar e controle dos efeitos
-
----
-
 ## 📂 Mídias do Projeto
 
 <img width="960" height="445" alt="IMG1" src="../MIDIAS PROJETO/IMG1.png"/>
@@ -53,3 +44,14 @@ GitHub: @devmarcelosantana
 Projeto desenvolvido com foco no domínio de Manipulação de DOM, Eventos e Animações em JavaScript Puro.
 
 Acesse a plataforma do projeto diretamente através do link abaixo.
+
+https://devmarcelosantana.github.io/PROJETOS/FULLPACK%20PRO/PROJETOS/JOKENPO/
+
+## 📂 Estrutura do Projeto
+
+```text
+├── index.html       # Estrutura principal da página e modais
+├── style.css        # Estilos, layout e animações CSS
+└── script.js        # Lógica do jogo, placar e controle dos efeitos
+
+---
