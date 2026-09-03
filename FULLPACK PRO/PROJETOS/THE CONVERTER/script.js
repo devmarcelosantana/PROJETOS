@@ -1,123 +1,124 @@
-const convertButton = document.querySelector(".button-converter")
+const convertButton = document.querySelector(".button-converter");
+const currencySelectFrom = document.querySelector("#coin-from");
+const currencySelectTo = document.querySelector("#coin-to");
 
-const currencySelectFrom = document.querySelector("#coin-to")
-const currencySelectTo = document.querySelector("#coin-from")   
-
-function convertCurrency () {
+/**
+ * Realiza a conversão utilizando o Dólar Americano (USD) como a moeda base da API.
+ * Cálculo: (Valor Digitado ÷ Taxa USD da Moeda de Origem) × Taxa USD da Moeda de Destino
+ */
+async function convertCurrency() {
     let rawValue = document.querySelector("#valor").value;
-    
 
-    if (rawValue.trim() == "") {
-        return;}
+    if (rawValue.trim() === "") return;
 
-
-    if (currencySelectFrom.value == "selecione" || currencySelectTo.value == "selecione") {
-        document.querySelector("#resume-value-to").value = "";
-        document.querySelector("#resume-value-from").value = "";
-        return; 
-    }
-        
+    // Normaliza a entrada com vírgula para ponto
     rawValue = rawValue.replace(",", ".");
     const inputConvertValue = parseFloat(rawValue);
-    
-    const currencyValueToConvert = document.querySelector("#resume-value-to")   
-    const currencyValueConverted = document.querySelector("#resume-value-from") 
-    
 
-    if (isNaN(inputConvertValue)){
-        alert("Por favor, digite um valor numérico válido.")
-        return
+    if (isNaN(inputConvertValue)) {
+        alert("Por favor, digite um valor numérico válido.");
+        return;
     }
 
-    const valueReal = 1
-    const valueDolar = 5.2
-    const valueEuro = 6.2
-    const valueLibra = 7.11
-    const valueDolarCanada = 4.11
+    if (currencySelectTo.value === "selecione" || currencySelectFrom.value === "selecione") {
+        document.querySelector("#resume-value-to").value = "";
+        document.querySelector("#resume-value-from").value = "";
+        return;
+    }
 
-    let valorEmReais = 0
+    try {
+        const response = await fetch('https://cdn.moneyconvert.net/api/latest.json');
+        const data = await response.json();
 
-    if (currencySelectFrom.value == "real") { valorEmReais = inputConvertValue * valueReal }
-    else if (currencySelectFrom.value == "dólar-americano") { valorEmReais = inputConvertValue * valueDolar }
-    else if (currencySelectFrom.value == "dólar-canadense") { valorEmReais = inputConvertValue * valueDolarCanada }
-    else if (currencySelectFrom.value == "euro") { valorEmReais = inputConvertValue * valueEuro}
-    else if (currencySelectFrom.value == "libra-esterlina") { valorEmReais = inputConvertValue * valueLibra }
+        const rates = data.rates;
 
+        // Todas as taxas da API são baseadas diretamente em 1 USD
+        const usdBaseRates = {
+            "dólar-americano": 1.0,           // Base de referência
+            "real": rates.BRL,                // Quanto vale 1 USD em BRL
+            "dólar-canadense": rates.CAD,     // Quanto vale 1 USD em CAD
+            "euro": rates.EUR,                // Quanto vale 1 USD em EUR
+            "libra-esterlina": rates.GBP      // Quanto vale 1 USD em GBP
+        };
 
-    if (currencySelectFrom.value == "real"){
-        currencyValueToConvert.value = new Intl.NumberFormat ("pt-BR", { style: "currency", currency: "BRL" }).format (inputConvertValue)}
-    else if (currencySelectFrom.value == "dólar-americano"){
-        currencyValueToConvert.value = new Intl.NumberFormat ("en-US", { style: "currency", currency: "USD" }).format (inputConvertValue)}
-    else if (currencySelectFrom.value == "dólar-canadense"){
-        currencyValueToConvert.value = new Intl.NumberFormat ("en-CA", { style: "currency", currency: "CAD" }).format (inputConvertValue)}
-    else if (currencySelectFrom.value == "euro"){
-        currencyValueToConvert.value = new Intl.NumberFormat ("de-DE", { style: "currency", currency: "EUR" }).format (inputConvertValue)}
-    else if (currencySelectFrom.value == "libra-esterlina"){
-        currencyValueToConvert.value = new Intl.NumberFormat ("en-GB", { style: "currency", currency: "GBP" }).format (inputConvertValue)}
+        // Mapeamento para formatação visual (Intl)
+        const formatConfigs = {
+            "real": { locale: "pt-BR", currency: "BRL" },
+            "dólar-americano": { locale: "en-US", currency: "USD" },
+            "dólar-canadense": { locale: "en-CA", currency: "CAD" },
+            "euro": { locale: "de-DE", currency: "EUR" },
+            "libra-esterlina": { locale: "en-GB", currency: "GBP" }
+        };
 
+        const currencyValueToConvert = document.querySelector("#resume-value-to");
+        const currencyValueConverted = document.querySelector("#resume-value-from");
 
-    if (currencySelectTo.value == "real"){
-        currencyValueConverted.value = new Intl.NumberFormat ("pt-BR", { style: "currency", currency: "BRL" }).format (valorEmReais / valueReal)}
-    else if (currencySelectTo.value == "dólar-americano"){
-        currencyValueConverted.value = new Intl.NumberFormat ("en-US", { style: "currency", currency: "USD" }).format (valorEmReais / valueDolar)}
-    else if (currencySelectTo.value == "dólar-canadense"){
-        currencyValueConverted.value = new Intl.NumberFormat ("en-CA", { style: "currency", currency: "CAD" }).format (valorEmReais / valueDolarCanada)}
-    else if (currencySelectTo.value == "euro"){
-        currencyValueConverted.value = new Intl.NumberFormat ("de-DE", { style: "currency", currency: "EUR" }).format (valorEmReais / valueEuro)}
-    else if (currencySelectTo.value == "libra-esterlina"){
-        currencyValueConverted.value = new Intl.NumberFormat ("en-GB", { style: "currency", currency: "GBP" }).format (valorEmReais / valueLibra)}
+        // 1. Converte o valor de entrada para a base Dólar (USD)
+        const taxaOrigemUSD = usdBaseRates[currencySelectTo.value];
+        const valorEmDolares = inputConvertValue / taxaOrigemUSD;
+
+        // 2. Converte do Dólar (USD) para a moeda de destino escolhida
+        const taxaDestinoUSD = usdBaseRates[currencySelectFrom.value];
+        const valorFinalConvertido = valorEmDolares * taxaDestinoUSD;
+
+        // Formatação do campo de entrada (moeda de origem)
+        const configTo = formatConfigs[currencySelectTo.value];
+        currencyValueToConvert.value = new Intl.NumberFormat(configTo.locale, {
+            style: "currency",
+            currency: configTo.currency
+        }).format(inputConvertValue);
+
+        // Formatação do campo de saída (moeda convertida)
+        const configFrom = formatConfigs[currencySelectFrom.value];
+        currencyValueConverted.value = new Intl.NumberFormat(configFrom.locale, {
+            style: "currency",
+            currency: configFrom.currency
+        }).format(valorFinalConvertido);
+
+    } catch (error) {
+        console.error("Erro ao buscar as taxas em Dólar na API:", error);
+    }
+}
+
+/**
+ * Dicionário de configuração da interface gráfica para os seletores
+ */
+const UI_CURRENCY_CONFIG = {
+    "selecione": { name: "Selecione", img: "./ASSETS/icon-interrogation.png" },
+    "real": { name: "Real", img: "./ASSETS/icon-brasil.png" },
+    "dólar-americano": { name: "Dólar Americano", img: "./ASSETS/icon-eua.png" },
+    "dólar-canadense": { name: "Dólar Canadense", img: "./ASSETS/icon-canada.png" },
+    "euro": { name: "Euro", img: "./ASSETS/icon-euro.png" },
+    "libra-esterlina": { name: "Libra Esterlina", img: "./ASSETS/icon-inglaterra.png" }
+};
+
+function changeCurrencyTo() {
+    const currencyNameTo = document.getElementById("text-result-to");
+    const currencyImgTo = document.querySelector(".icon-flags-to");
+
+    const selected = UI_CURRENCY_CONFIG[currencySelectTo.value];
+    if (selected) {
+        currencyNameTo.innerHTML = selected.name;
+        currencyImgTo.src = selected.img;
+    }
+
+    convertCurrency();
 }
 
 function changeCurrencyFrom() {
-    const currencyNameFrom = document.getElementById("text-result-from")
-    const currencyImgFrom = document.querySelector(".icon-flags-from")
+    const currencyNameFrom = document.getElementById("text-result-from");
+    const currencyImgFrom = document.querySelector(".icon-flags-from");
 
-    if (currencySelectFrom.value == "selecione") {
-        currencyNameFrom.innerHTML = "Selecione"
-        currencyImgFrom.src = "./ASSETS/icon-interrogation.png"}
-    else if (currencySelectFrom.value == "real") {
-        currencyNameFrom.innerHTML = "Real"
-        currencyImgFrom.src = "./ASSETS/icon-brasil.png"}
-    else if (currencySelectFrom.value == "dólar-americano") {
-        currencyNameFrom.innerHTML = "Dólar Americano"
-        currencyImgFrom.src = "./ASSETS/icon-eua.png"}
-    else if (currencySelectFrom.value == "dólar-canadense") {
-        currencyNameFrom.innerHTML = "Dólar Canadense"
-        currencyImgFrom.src = "./ASSETS/icon-canada.png"}
-    else if (currencySelectFrom.value == "euro") {
-        currencyNameFrom.innerHTML = "Euro"
-        currencyImgFrom.src = "./ASSETS/icon-euro.png"}
-    else if (currencySelectFrom.value == "libra-esterlina") {
-        currencyNameFrom.innerHTML = "Libra Esterlina"
-        currencyImgFrom.src = "./ASSETS/icon-inglaterra.png"}
+    const selected = UI_CURRENCY_CONFIG[currencySelectFrom.value];
+    if (selected) {
+        currencyNameFrom.innerHTML = selected.name;
+        currencyImgFrom.src = selected.img;
+    }
+
+    convertCurrency();
 }
 
-function changeCurrencyTo() {
-    const currencyNameTo = document.getElementById("text-result-to")
-    const currencyImgTo = document.querySelector(".icon-flags-to")
-
-    if (currencySelectTo.value == "selecione") {
-        currencyNameTo.innerHTML = "Selecione"
-        currencyImgTo.src = "./ASSETS/icon-interrogation.png"}
-    else if (currencySelectTo.value == "real") {
-        currencyNameTo.innerHTML = "Real"
-        currencyImgTo.src = "./ASSETS/icon-brasil.png"}
-    else if (currencySelectTo.value == "dólar-americano") {
-        currencyNameTo.innerHTML = "Dólar Americano"
-        currencyImgTo.src = "./ASSETS/icon-eua.png"}
-    else if (currencySelectTo.value == "dólar-canadense") {
-        currencyNameTo.innerHTML = "Dólar Canadense"
-        currencyImgTo.src = "./ASSETS/icon-canada.png"}
-    else if (currencySelectTo.value == "euro") {
-        currencyNameTo.innerHTML = "Euro"
-        currencyImgTo.src = "./ASSETS/icon-euro.png"}
-    else if (currencySelectTo.value == "libra-esterlina") {
-        currencyNameTo.innerHTML = "Libra Esterlina"
-        currencyImgTo.src = "./ASSETS/icon-inglaterra.png"}
-
-    convertCurrency ()
-}
-
-convertButton.addEventListener("click", convertCurrency)
-currencySelectTo.addEventListener("change", changeCurrencyTo)
-currencySelectFrom.addEventListener("change", changeCurrencyFrom)
+// Event Listeners
+convertButton.addEventListener("click", convertCurrency);
+currencySelectTo.addEventListener("change", changeCurrencyTo);
+currencySelectFrom.addEventListener("change", changeCurrencyFrom);
