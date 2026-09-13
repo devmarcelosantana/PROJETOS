@@ -1,217 +1,1065 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STUDIO MARI PISANI</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Studio Mari Pisani - Cabelo & Estética"
+    >
+
+    <title>Studio Mari Pisani | Cabelo & Estética</title>
+
+
+    <!-- GOOGLE FONTS -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fuggles&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fuggles&family=Quicksand:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="styles.css"
+    >
+
 </head>
 
+
 <body>
-    <header>
-        
-    </header>
-    
+
+
+    <!-- =====================================================
+         MENU LATERAL
+    ====================================================== -->
+
     <aside class="sidebar">
-        <div class="img-logo-menu">
-            <img src="ASSETS/SUBLOGO TRANSPARENTE.png" alt="logo-mari-pisani" height="100px">
+
+        <div class="sidebar-logo">
+
+            <img
+                src="ASSETS/SUBLOGO TRANSPARENTE.png"
+                alt="Studio Mari Pisani"
+            >
+
         </div>
 
-        <div class="sidebar-class">
-            <h2 id="title-sidebar">MENU</h2>
+
+        <div class="sidebar-inner">
+
+            <span class="sidebar-label">
+                MENU
+            </span>
+
+
             <nav class="sidebar-menu">
-                <a class="link-sidebar" href="#inicio">ÍNICIO</a>
-                <a class="link-sidebar" href="#sobre-nós">SOBRE NÓS</a>
-                    <div class="dropdown">
-                        <a class="link-sidebar" href="#serviços" class="dropdown-link">SERVIÇOS</a>
-                            <div class="dropdown-content">
-                                <a class="link-sidebar" href="#coloração">COLORAÇÃO</a>
-                                <a class="link-sidebar" href="#descoloração">DESCOLORAÇÃO</a>
-                                <a class="link-sidebar" href="#alisamentos">ALISAMENTOS</a>
-                                <a class="link-sidebar" href="#cortes">CORTES</a>
-                                <a class="link-sidebar" href="#terapia-capilar">TERAPIA CAPILAR</a>
-                            </div>
-                    </div>
-                <a class="link-sidebar" href="#agenda">AGENDA</a>
-                <a class="link-sidebar" href="#contato">CONTATO</a>
+
+                <a
+                    href="#inicio"
+                    class="sidebar-link"
+                >
+                    <span>01</span>
+                    <strong>INÍCIO</strong>
+                </a>
+
+
+                <a
+                    href="#sobre-nós"
+                    class="sidebar-link"
+                >
+                    <span>02</span>
+                    <strong>SOBRE NÓS</strong>
+                </a>
+
+
+                <a
+                    href="#"
+                    class="sidebar-link"
+                    id="servicosBtn"
+                >
+                    <span>03</span>
+                    <strong>SERVIÇOS</strong>
+                </a>
+
+
+                <a
+                    href="#agenda"
+                    class="sidebar-link"
+                >
+                    <span>04</span>
+                    <strong>AGENDA</strong>
+                </a>
+
+
+                <a
+                    href="#contato"
+                    class="sidebar-link"
+                >
+                    <span>05</span>
+                    <strong>CONTATO</strong>
+                </a>
+
             </nav>
+
         </div>
+
     </aside>
 
-    <main>
-        <div id="inicio">
-            <h1>Studio Mari Pisani</h1>
-            <h2>Cabelo & Estética</h2>
-        </div>
 
-        <div class="carousel-container">
-            <img class="slide fade" src="ASSETS/IMAGEM RECEPÇÃO.png" alt="recepção-salão">
-            <img class="slide fade" src="ASSETS/IMAGEM CADEIRAS SALAO.png" alt="espaço-cadeiras-salão">
-            <img class="slide fade" src="ASSETS/IMAGEM MANICURE.png" alt="espaço-manicure">
-            <img class="slide fade" src="ASSETS/IMAGEM SALA DEPILAÇÃO.png" alt="espaço-depilação">
-        </div>
 
-        <div id="sobre-nós">
-            <p>
-                Há mais de 20 anos transformando autoestima e realçando a beleza singular de cada cliente, o Studio Mari Pisani é referência em cuidados capilares e estéticos em Suzano (SP).
-                Combinando tradição, técnica avançada e as últimas tendências do mercado, nosso espaço oferece uma experiência completa de cuidado e bem-estar.
-                Aliando disciplina técnica à paixão pela beleza, nossa missão é entregar resultados de alta performance, garantindo a saúde do seu cabelo em primeiro lugar.
-            </p>
-        </div>
+    <!-- =====================================================
+         MENU MOBILE
+    ====================================================== -->
 
-        <div id="serviços">
-            <h4>SERVIÇOS</h4>
-            <h5>Somos especialistas em:</h5>
-            <ul>
-                <li><b>Coloração & Descoloração:</b> Louros radiantes, morenas iluminadas e transformações seguras.</li>
-                <li><b>Cortes & Alisamentos:</b> Designs modernos e realinhamento dos fios com alta durabilidade e brilho.</li>
-                <li><b>Terapia Capilar:</b> Tratamentos profundos e personalizados para a saúde do couro cabeludo e dos fios.</li>
-            </ul>
+    <button
+        class="mobile-menu-button"
+        id="mobileMenuButton"
+        aria-label="Abrir menu"
+    >
+        ☰
+    </button>
 
-        <div id="coloração">
-            <h5>COLORAÇÃO</h5>
-                <p>
-                Quer dar mais vida e brilho para o seu cabelo? A coloração certa realça a sua beleza e levanta a autoestima!
-                Trabalhamos com as melhores marcas do mercado para entregar a cor dos seus sonhos sem abrir mão da saúde dos seus fios.
-                Utilizamos técnicas modernas de coloração e produtos de alta qualidade para garantir que seu cabelo mude de cor, mas continue saudável, brilhante e cheio de vida.
-                <br><br>
-                <b>Especialidades:</b>
-                    <ul>
-                        <li>Mechas e Luzes (Morena Iluminada/Loiras)</li>
-                        <li>Descoloração Global</li>
-                        <li>Retoque de Raiz</li>
-                        <li>Cores Fantasia</li>
-                    </ul>
-                </p>
-        </div>
 
-        <div id="descoloração">
-            <h5>DESCOLORAÇÃO</h5>
-                <p>
-                Mudar o visual e clarear os fios é maravilhoso, mas o verdadeiro segredo de um loiro incrível é a saúde do cabelo.
-                Aqui, o processo de descoloração é feito com todo o cuidado que você precisa. Utilizamos produtos de alta performance, protetores de fibra (Plex) e fazemos uma avaliação minuciosa do seu fio antes de começar, garantindo um clareamento seguro, fios íntegros e muito brilho!
-                </p>
-        </div>
 
-        <div id="alisamentos">
-            <h5>ALISAMENTOS</h5>
-                <p>
-                Muitas pessoas têm receio de fazer alisamentos por medo de quebrar ou ressecar os fios. Mas o segredo de um liso perfeito está no diagnóstico correto e na escolha do produto certo para o seu tipo de cabelo!
-                Nós do Studio Mari Pisani, antes de qualquer química, avaliamos a saúde do seu fio para garantir que o resultado seja um cabelo liso, saudável, sedoso e com movimento natural. Nada de fios rígidos ou danificados!
-                Dê adeus ao trabalho diário de modelar o cabelo e conquiste a praticidade que você merece.
-                <br><br>
-                <h5>Nossos Serviços de Alisamentos:</h5>
-                    <ul>
-                        <li>Progressiva Com e Sem Formol (Liso extremo e seguro)</li>
-                        <li>Botox Capilar (Redução de volume e hidratação)</li>
-                        <li>Selagem Térmica (Alinhamento e combate ao frizz)</li>
-                    </ul>
-                </p>
-        </div>
+    <!-- =====================================================
+         OVERLAY SERVIÇOS
+    ====================================================== -->
 
-        <div id="cortes">
-            <h5>CORTES</h5>
-                <p>
-                Você sabia que um bom corte não serve apenas para tirar as pontinhas, mas sim para moldar o seu rosto, trazer leveza e expressar a sua personalidade?
-                Seja para mudar radicalmente com um curtinho moderno, dar movimento com camadas e franja, ou apenas manter a saúde dos fios com um corte preciso, eu estou aqui para criar o visual perfeito para você!
-                Pode ficar tranquila! Aqui no Studio Mari Pisani, nós conversamos antes de a tesoura entrar em ação. Se você quer apenas tirar as pontas duplas e ressecadas para o cabelo crescer mais forte e saudável, eu respeito o seu comprimento.
-                Agora, se o seu desejo é uma transformação completa para começar uma nova fase, nós planejamos juntas o corte que mais combina com o formato do seu rosto e o seu estilo de vida.
-                Cabelo bonito é cabelo bem cuidado e com corte em dia!
-                <br><br>
-                    <h5>ESTILOS QUE FAZEM SUCESSO POR AQUI:</h5>
-                        <ul>
-                            <li>Long Bob (Elegantes e atemporais)</li>
-                            <li>Cortes em Camadas / Shaggy Hair (Volume e movimento)</li>
-                            <li>Pixie / Curtos Modernos (Práticos e cheios de atitude)</li>
-                            <li>Franjas (A moldura perfeita para o rosto)</li>
-                        </ul>
-                </p>
-        </div>
+    <div
+        class="services-overlay"
+        id="servicesOverlay"
+    ></div>
 
-        <div id="terapia-capilar">
-            <h5>TERAPIA CAPILAR</h5>
-                <p>
-                Cabelo bonito começa pelo couro cabeludo! Você já conhece a Terapia Capilar?
-                Muitas vezes investimos em máscaras caras, mas esquecemos que a saúde do cabelo nasce na raiz. Se você nota que seu cabelo está caindo mais do que o normal, não cresce, está muito oleoso ou com aspecto sem vida, o seu couro cabeludo pode estar precisando de socorro!
-                A Terapia Capilar é um tratamento focado em cuidar da saúde do couro cabeludo e da fibra dos fios, tratando disfunções de dentro para fora.
-                <br><br>
-                <h5>PARA QUEM É INDICADO?</h5>
-                    <ul>
-                        <li>Queda capilar e falhas</li>
-                        <li>Oleosidade excessiva ou caspa</li>
-                        <li>Fios quebradiços e danificados por químicas</li>
-                        <li>Couro cabeludo sensível ou com coceira</li>
-                        <li>Tratamento de doenças do couro cabeludo (Alopéssia, Psoríase, entre outras)</li>
-                    </ul>
-                <p>
-                Aqui no salão, realizamos uma avaliação personalizada para entender as necessidades do seu fio e devolver a força, o brilho e o crescimento saudável que ele merece.
-                A Terapia Capilar vai muito além de uma hidratação comum: ela trata a saúde do seu couro cabeludo, estimula o crescimento e fortalece os fios desde a raiz. É o verdadeiro detox que o seu cabelo precisa para crescer forte e saudável!
-                O acúmulo de resíduos de produtos, poluição, suor e oleosidade pode entupir os bulbos capilares, enfraquecendo os fios e causando queda ou caspa. É por isso que o seu cabelo, às vezes, parece que "não responde" a nenhum tratamento.
-                A Terapia Capilar entra em ação para desintoxicar, nutrir e oxigenar o couro cabeludo, criando o ambiente perfeito para o seu cabelo crescer forte, encorpado e com um brilho incrível.
-                <b>Tratamentos personalizados para a sua real necessidade.</b>
-                </p>
-        </div>
 
-        <div id="agenda">
-            <h5>AGENDA</h5>
-                <p>
-                Seu momento de autocuidado está esperando por você!
-                O dia a dia corrido muitas vezes faz a gente adiar o cuidado com nós mesmas, não é? Mas o seu cabelo é a sua identidade e merece aquela atenção especial que transforma não só o visual, mas também a autoestima!
-                Seja para renovar o corte, mudar a cor, trazer mais brilho com um tratamento ou garantir a praticidade do liso perfeito, nós estamos prontas para te atender e entregar o resultado dos seus sonhos.
-                Que tal reservar um tempinho na sua agenda para cuidar de você esta semana?
-                Escolha o melhor dia e horário para a sua rotina e vamos agendar o seu momento.
-                </p>    
-            <br>
-            <div class="form-container">
-                <form>
-                    <label for="data"><h5>REALIZE SEU AGENDAMENTO:</h5></label>
-                    <br>
-                    <input type="text" id="nome-agendamento" name="nome" placeholder="Insira seu nome">
-                    <br>
-                    <input type="date" id="data" name="data">
-                    <br>
-                    <input type="time" id="horário" name="horário" min="09:00" max="18:00">
-                    <br><br>
-            
-                <h5>SELECIONE O SERVIÇO DESEJADO</h5>
-                    <label>
-                        <input type="checkbox" name="serviços" value="Coloração">Coloração
-                    </label>
-                    <br>
-                    <label>
-                        <input type="checkbox" name="serviços" value="Descoloração">Descoloração
-                    </label>
-                    <br>
-                    <label>
-                        <input type="checkbox" name="serviços" value="Alisamento">Alisamento
-                    </label>
-                    <br>
-                    <label>
-                        <input type="checkbox" name="serviços" value="Corte">Corte
-                    </label>
-                    <br>
-                    <label>
-                        <input type="checkbox" name="serviços" value="Terapia Capilar">Terapia Capilar
-                    </label>
-                    <br><br>
-                    <input id="button-submit" type="submit" value="Enviar">
-                </form>
+
+    <!-- =====================================================
+         DRAWER SERVIÇOS
+    ====================================================== -->
+
+    <aside
+        class="services-drawer"
+        id="servicesDrawer"
+    >
+
+        <button
+            class="services-close"
+            id="servicesClose"
+            aria-label="Fechar serviços"
+        >
+            &times;
+        </button>
+
+
+        <div class="services-drawer-content">
+
+            <span class="eyebrow">
+                STUDIO MARI PISANI
+            </span>
+
+            <h2>
+                SERVIÇOS
+            </h2>
+
+
+            <div class="services-menu">
+
+                <button
+                    type="button"
+                    data-service="servicos"
+                >
+                    SERVIÇOS
+                </button>
+
+                <button
+                    type="button"
+                    data-service="coloracao"
+                >
+                    COLORAÇÃO
+                </button>
+
+                <button
+                    type="button"
+                    data-service="descoloracao"
+                >
+                    DESCOLORAÇÃO
+                </button>
+
+                <button
+                    type="button"
+                    data-service="alisamentos"
+                >
+                    ALISAMENTOS
+                </button>
+
+                <button
+                    type="button"
+                    data-service="cortes"
+                >
+                    CORTES
+                </button>
+
+                <button
+                    type="button"
+                    data-service="terapia"
+                >
+                    TERAPIA CAPILAR
+                </button>
+
             </div>
+
+
+            <div class="service-content">
+
+
+                <!-- SERVIÇOS -->
+
+                <div
+                    class="service-panel"
+                    id="service-servicos"
+                >
+
+                    <h3>
+                        Especialistas em realçar sua beleza
+                    </h3>
+
+                    <p>
+                        Nosso trabalho combina técnica,
+                        cuidado e personalização para
+                        proporcionar uma experiência completa
+                        de beleza e bem-estar.
+                    </p>
+
+
+                    <ul>
+
+                        <li>
+                            <strong>Coloração & Descoloração:</strong>
+                            louros radiantes, morenas iluminadas
+                            e transformações seguras.
+                        </li>
+
+                        <li>
+                            <strong>Cortes & Alisamentos:</strong>
+                            designs modernos e realinhamento
+                            dos fios.
+                        </li>
+
+                        <li>
+                            <strong>Terapia Capilar:</strong>
+                            tratamentos personalizados para
+                            a saúde dos fios e couro cabeludo.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+
+                <!-- COLORAÇÃO -->
+
+                <div
+                    class="service-panel"
+                    id="service-coloracao"
+                >
+
+                    <h3>
+                        COLORAÇÃO
+                    </h3>
+
+                    <p>
+                        Quer dar mais vida e brilho para o
+                        seu cabelo? A coloração certa realça
+                        sua beleza e levanta a autoestima.
+                    </p>
+
+                    <p>
+                        Trabalhamos com técnicas modernas
+                        e produtos de qualidade, sempre
+                        priorizando a saúde dos fios.
+                    </p>
+
+
+                    <h4>
+                        Especialidades
+                    </h4>
+
+                    <ul>
+
+                        <li>
+                            Mechas e Luzes
+                        </li>
+
+                        <li>
+                            Morena Iluminada
+                        </li>
+
+                        <li>
+                            Loiros
+                        </li>
+
+                        <li>
+                            Descoloração Global
+                        </li>
+
+                        <li>
+                            Retoque de Raiz
+                        </li>
+
+                        <li>
+                            Cores Fantasia
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+
+                <!-- DESCOLORAÇÃO -->
+
+                <div
+                    class="service-panel"
+                    id="service-descoloracao"
+                >
+
+                    <h3>
+                        DESCOLORAÇÃO
+                    </h3>
+
+                    <p>
+                        Mudar o visual e clarear os fios é
+                        maravilhoso, mas o verdadeiro segredo
+                        de um loiro incrível é a saúde do cabelo.
+                    </p>
+
+                    <p>
+                        O processo é realizado com cuidado,
+                        avaliação dos fios e utilização de
+                        produtos de alta performance.
+                    </p>
+
+                    <p>
+                        O objetivo é garantir clareamento
+                        seguro, fios íntegros e muito brilho.
+                    </p>
+
+                </div>
+
+
+
+                <!-- ALISAMENTOS -->
+
+                <div
+                    class="service-panel"
+                    id="service-alisamentos"
+                >
+
+                    <h3>
+                        ALISAMENTOS
+                    </h3>
+
+                    <p>
+                        O segredo de um liso bonito está no
+                        diagnóstico correto e na escolha do
+                        procedimento adequado para cada tipo
+                        de cabelo.
+                    </p>
+
+                    <p>
+                        Antes de qualquer procedimento químico,
+                        avaliamos a saúde dos fios para buscar
+                        um resultado liso, saudável, sedoso e
+                        com movimento natural.
+                    </p>
+
+                    <ul>
+
+                        <li>
+                            Progressiva com e sem formol
+                        </li>
+
+                        <li>
+                            Botox Capilar
+                        </li>
+
+                        <li>
+                            Selagem Térmica
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+
+                <!-- CORTES -->
+
+                <div
+                    class="service-panel"
+                    id="service-cortes"
+                >
+
+                    <h3>
+                        CORTES
+                    </h3>
+
+                    <p>
+                        Um bom corte não serve apenas para
+                        tirar as pontinhas. Ele pode moldar
+                        o rosto, trazer leveza e expressar
+                        sua personalidade.
+                    </p>
+
+                    <p>
+                        Seja para uma transformação completa,
+                        camadas, franja ou manutenção dos fios,
+                        o corte é pensado de acordo com seu
+                        estilo e objetivo.
+                    </p>
+
+
+                    <h4>
+                        Estilos
+                    </h4>
+
+                    <ul>
+
+                        <li>
+                            Long Bob
+                        </li>
+
+                        <li>
+                            Cortes em camadas
+                        </li>
+
+                        <li>
+                            Franja
+                        </li>
+
+                        <li>
+                            Cortes personalizados
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+
+                <!-- TERAPIA -->
+
+                <div
+                    class="service-panel"
+                    id="service-terapia"
+                >
+
+                    <h3>
+                        TERAPIA CAPILAR
+                    </h3>
+
+                    <p>
+                        Tratamentos personalizados para
+                        as necessidades reais dos seus fios
+                        e couro cabeludo.
+                    </p>
+
+                    <p>
+                        O objetivo é promover equilíbrio,
+                        cuidado e saúde capilar através de
+                        protocolos individualizados.
+                    </p>
+
+                    <strong>
+                        Tratamentos personalizados para
+                        a sua real necessidade.
+                    </strong>
+
+                </div>
+
+            </div>
+
         </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+    ====================================================== -->
+
+    <main>
+
+
+        <!-- INÍCIO -->
+
+        <section id="inicio" class="hero-section">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">
+                    CABELO & ESTÉTICA
+                </span>
+
+                <h1>
+                    Studio Mari Pisani
+                </h1>
+
+                <p>
+                    Beleza, cuidado e autoestima em
+                    cada detalhe.
+                </p>
+
+                <a
+                    href="#agenda"
+                    class="hero-button"
+                >
+                    AGENDAR HORÁRIO
+                </a>
+
+            </div>
+
+
+            <!-- CARROSSEL -->
+
+            <div class="carousel-container">
+
+                <img
+                    class="slide"
+                    src="ASSETS/IMAGEM RECEPÇÃO.png"
+                    alt="Recepção do Studio Mari Pisani"
+                >
+
+                <img
+                    class="slide"
+                    src="ASSETS/IMAGEM CADEIRAS SALAO.png"
+                    alt="Espaço do salão"
+                >
+
+                <img
+                    class="slide"
+                    src="ASSETS/IMAGEM MANICURE.png"
+                    alt="Espaço de manicure"
+                >
+
+                <img
+                    class="slide"
+                    src="ASSETS/IMAGEM SALA DEPILAÇÃO.png"
+                    alt="Sala de depilação"
+                >
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             SOBRE NÓS
+        ====================================================== -->
+
+        <section
+            id="sobre-nós"
+            class="about-section"
+        >
+
+            <div class="section-heading">
+
+                <span class="eyebrow">
+                    NOSSA HISTÓRIA
+                </span>
+
+                <h2>
+                    Sobre nós
+                </h2>
+
+            </div>
+
+
+            <div class="about-grid">
+
+                <div class="about-image">
+
+                    <img
+                        src="ASSETS/IMAGEM RECEPÇÃO.png"
+                        alt="Recepção do Studio Mari Pisani"
+                    >
+
+                </div>
+
+
+                <div class="about-text">
+
+                    <p class="lead">
+                        Há mais de 20 anos transformando
+                        autoestima e realçando a beleza
+                        singular de cada cliente.
+                    </p>
+
+                    <p>
+                        O Studio Mari Pisani é referência
+                        em cuidados capilares e estéticos
+                        em Suzano (SP).
+                    </p>
+
+                    <p>
+                        Combinando tradição, técnica avançada
+                        e as últimas tendências do mercado,
+                        nosso espaço oferece uma experiência
+                        completa de cuidado e bem-estar.
+                    </p>
+
+                    <p>
+                        Aliando disciplina técnica à paixão
+                        pela beleza, nossa missão é entregar
+                        resultados de alta performance,
+                        garantindo a saúde do seu cabelo
+                        em primeiro lugar.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             EXPERIÊNCIA
+        ====================================================== -->
+
+        <section class="experience-section">
+
+            <div class="experience-item">
+
+                <strong>
+                    +20
+                </strong>
+
+                <span>
+                    anos de experiência
+                </span>
+
+            </div>
+
+
+            <div class="experience-item">
+
+                <strong>
+                    Cuidado
+                </strong>
+
+                <span>
+                    personalizado
+                </span>
+
+            </div>
+
+
+            <div class="experience-item">
+
+                <strong>
+                    Técnica
+                </strong>
+
+                <span>
+                    e qualidade
+                </span>
+
+            </div>
+
+
+            <div class="experience-item">
+
+                <strong>
+                    Beleza
+                </strong>
+
+                <span>
+                    com propósito
+                </span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             AGENDA
+        ====================================================== -->
+
+        <section
+            id="agenda"
+            class="appointment-section"
+        >
+
+            <div class="section-heading">
+
+                <span class="eyebrow">
+                    RESERVE SEU MOMENTO
+                </span>
+
+                <h2>
+                    Agenda
+                </h2>
+
+                <p>
+                    Escolha o melhor dia e horário
+                    para cuidar de você.
+                </p>
+
+            </div>
+
+
+            <div class="appointment-card">
+
+                <div class="appointment-intro">
+
+                    <span class="card-number">
+                        04
+                    </span>
+
+                    <h3>
+                        Realize seu agendamento
+                    </h3>
+
+                    <p>
+                        Preencha os dados abaixo.
+                        Sua solicitação será registrada
+                        automaticamente em nossa agenda.
+                    </p>
+
+                </div>
+
+
+                <form
+                    id="appointmentForm"
+                    class="appointment-form"
+                >
+
+
+                    <!-- NOME -->
+
+                    <div class="form-group">
+
+                        <label for="nome">
+                            Nome completo
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nome"
+                            name="nome"
+                            placeholder="Insira seu nome"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- TELEFONE -->
+
+                    <div class="form-group">
+
+                        <label for="telefone">
+                            Telefone / WhatsApp
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="telefone"
+                            name="telefone"
+                            placeholder="(11) 99999-9999"
+                            autocomplete="tel"
+                            maxlength="15"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <div class="form-row">
+
+
+                        <!-- DATA -->
+
+                        <div class="form-group">
+
+                            <label for="data">
+                                Data desejada
+                            </label>
+
+                            <input
+                                type="date"
+                                id="data"
+                                name="data"
+                                required
+                            >
+
+                        </div>
+
+
+
+                        <!-- HORÁRIO -->
+
+                        <div class="form-group">
+
+                            <label for="horario">
+                                Horário desejado
+                            </label>
+
+                            <input
+                                type="time"
+                                id="horario"
+                                name="horario"
+                                min="09:00"
+                                max="18:00"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- SERVIÇOS -->
+
+                    <div class="form-group">
+
+                        <label>
+                            Selecione o serviço desejado
+                        </label>
+
+
+                        <div class="service-checkboxes">
+
+
+                            <label class="checkbox-item">
+
+                                <input
+                                    type="checkbox"
+                                    name="servicos"
+                                    value="Coloração"
+                                >
+
+                                <span>
+                                    Coloração
+                                </span>
+
+                            </label>
+
+
+                            <label class="checkbox-item">
+
+                                <input
+                                    type="checkbox"
+                                    name="servicos"
+                                    value="Descoloração"
+                                >
+
+                                <span>
+                                    Descoloração
+                                </span>
+
+                            </label>
+
+
+                            <label class="checkbox-item">
+
+                                <input
+                                    type="checkbox"
+                                    name="servicos"
+                                    value="Alisamento"
+                                >
+
+                                <span>
+                                    Alisamento
+                                </span>
+
+                            </label>
+
+
+                            <label class="checkbox-item">
+
+                                <input
+                                    type="checkbox"
+                                    name="servicos"
+                                    value="Corte"
+                                >
+
+                                <span>
+                                    Corte
+                                </span>
+
+                            </label>
+
+
+                            <label class="checkbox-item">
+
+                                <input
+                                    type="checkbox"
+                                    name="servicos"
+                                    value="Terapia Capilar"
+                                >
+
+                                <span>
+                                    Terapia Capilar
+                                </span>
+
+                            </label>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- MENSAGEM -->
+
+                    <div
+                        id="appointmentMessage"
+                        class="appointment-message"
+                        aria-live="polite"
+                    ></div>
+
+
+
+                    <!-- BOTÃO -->
+
+                    <button
+                        type="submit"
+                        id="button-submit"
+                        class="submit-button"
+                    >
+                        SOLICITAR AGENDAMENTO
+                    </button>
+
+
+                    <small class="form-note">
+                        O horário será registrado como
+                        pendente até a confirmação.
+                    </small>
+
+                </form>
+
+            </div>
+
+        </section>
+
     </main>
 
+
+
+    <!-- =====================================================
+         RODAPÉ
+    ====================================================== -->
+
     <footer id="contato">
-        <div class="redes-sociais">
-            <a class="link-redes" href="https://www.instagram.com/studiomaripisani/" target="_blank" rel="noopener noreferrer"><img src="ASSETS/LOGO INSTAGRAM.png" alt="logo-instagram" width="50px"></a>
-            <a class="link-redes" href="https://wa.me/5511970710715" target="_blank" rel="noopener noreferrer"><img src="ASSETS/LOGO WHATSAPP.png" alt="logo-whatsapp" width="48px"></a>
+
+        <div class="footer-content">
+
+            <div>
+
+                <span class="eyebrow">
+                    FALE CONOSCO
+                </span>
+
+                <h2>
+                    Contato
+                </h2>
+
+                <p>
+                    Entre em contato com o Studio
+                    Mari Pisani.
+                </p>
+
+            </div>
+
+
+            <div class="footer-socials">
+
+                <a
+                    href="https://www.instagram.com/studiomaripisani/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                >
+
+                    <img
+                        src="ASSETS/LOGO INSTAGRAM.png"
+                        alt="Instagram"
+                    >
+
+                </a>
+
+
+                <a
+                    href="https://wa.me/5511970710715"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="WhatsApp"
+                >
+
+                    <img
+                        src="ASSETS/LOGO WHATSAPP.png"
+                        alt="WhatsApp"
+                    >
+
+                </a>
+
+            </div>
+
         </div>
-        <p>&copy; 2026 Studio Mari Pisani. Todos os direitos reservados. Desenvolvido por &copy; DEV Marcelo Santana.</p>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                &copy; 2026 Studio Mari Pisani.
+                Todos os direitos reservados.
+            </p>
+
+            <p>
+                Desenvolvido por
+                &copy; DEV Marcelo Santana.
+            </p>
+
+        </div>
+
     </footer>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>
