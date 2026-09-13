@@ -601,6 +601,24 @@ app.patch(
 | SERVIDOR
 |--------------------------------------------------------------------------
 */
+// PUT: Atualiza o status do agendamento (confirmar ou cancelar)
+app.put('/api/appointments/:id/status', async (req, res) => {
+    const { id } = req.params;
+    const { status } = req.body; // Aceitará 'confirmado' ou 'cancelado'
+
+    try {
+        const { data, error } = await supabase
+            .from('appointments')
+            .update({ status })
+            .eq('id', id)
+            .select();
+
+        if (error) throw error;
+        res.json({ success: true, appointment: data[0] });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
 
 app.listen(
     PORT,
