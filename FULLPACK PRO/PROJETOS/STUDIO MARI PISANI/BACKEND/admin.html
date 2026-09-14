@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel | Studio Mari Pisani</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f8f9fa; padding: 20px; color: #333; }
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #2c3e50; color: #fff; }
+        .btn { padding: 8px 12px; border: none; cursor: pointer; border-radius: 4px; font-weight: bold; margin-right: 5px; }
+        .btn-confirm { background: #28a745; color: white; }
+        .btn-cancel { background: #dc3545; color: white; }
+        .status-pendente { color: #f39c12; font-weight: bold; }
+        .status-confirmado { color: #28a745; font-weight: bold; }
+        .status-cancelado { color: #dc3545; text-decoration: line-through; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Gerenciar Agendamentos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Horário</th>
+                    <th>Cliente</th>
+                    <th>Serviço</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="lista-agendamentos">
+                <tr><td colspan="6">Carregando agendamentos...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Substitua pelo domínio gerado no Easypanel (ex: https://studio-api.seu-dominio.com)
+        const API_URL = 'http://supabase_studio-mari-api:80/'; 
+
+        async function carregarAgendamentos() {
+            try {
+                const res = await fetch(`${API_URL}/api/appointments`);
+                const agendamentos = await res.json();
+                
+                const tbody = document.getElementById('lista-agendamentos');
+                tbody.innerHTML = '';
+
+                agendamentos.forEach(ag => {
+                    const dataFormatada = ag.date.split('-').reverse().join('/');
+                    const horarioFormatado = ag.time.slice(0, 5);
+
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${dataFormatada}</td>
+                        <td>${horarioFormatado}</td>
+                        <td><strong>\({ag.name}</strong><br><small>\){ag.phone}</small></td>
+                        <td>${ag.services}</td>
+                        <td class="status-\({ag.status}">\){ag.status.toUpperCase()}</td>
+                        <td>
+                            \({ag.status === 'pendente' ? `<button class="btn btn-confirm" onclick="mudarStatus('\){ag.id}', 'confirmado')">✅ Confirmar</button>` : ''}
+                            \({ag.status !== 'cancelado' ? `<button class="btn btn-cancel" onclick="mudarStatus('\){ag.id}', 'cancelado')">❌ Cancelar</button>` : ''}
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } catch (error) {
+                console.error('Erro ao buscar agendamentos:', error);
+                document.getElementById('lista-agendamentos').innerHTML = '<tr><td colspan="6">Erro ao carregar dados. Verifique a API.</td></tr>';
+            }
+        }
+
+        async function mudarStatus(id, novoStatus) {
+            if (!confirm(`Deseja realmente marcar este agendamento como ${novoStatus}?`)) return;
+
+            try {
+                const res = await fetch(`\({API_URL}/api/appointments/\){id}/status`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: novoStatus })
+                });
+
+                if (res.ok) {
+                    carregarAgendamentos();
+                } else {
+                    alert('Erro ao atualizar status.');
+                }
+            } catch (error) {
+                console.error('Erro na requisição:', error);
+            }
+        }
+
+        carregarAgendamentos();
+    </script>
+</body>
+</html>
