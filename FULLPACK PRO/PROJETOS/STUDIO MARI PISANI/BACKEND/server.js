@@ -217,8 +217,8 @@ app.post("/api/appointments", async (req, res) => {
         const dayOfWeek =
             appointmentDate.getDay();
 
-        // Dias de funcionamento permitidos (1 = Segunda a 6 = Sábado)
-        const diasPermitidos = [1, 2, 3, 4, 5, 6];
+        // Dias de funcionamento permitidos (Sincronizado com o front-end: Terça a Sábado -> 2, 3, 4, 5, 6)
+        const diasPermitidos = [2, 3, 4, 5, 6];
 
         if (!diasPermitidos.includes(dayOfWeek)) {
 
@@ -250,8 +250,12 @@ app.post("/api/appointments", async (req, res) => {
 
         }
 
-        // Horários permitidos de atendimento
-        const horariosPermitidos = ["09:00", "10:00", "11:30", "14:00", "15:30", "17:00"];
+        // Horários permitidos de atendimento (Sincronizados com o front-end)
+        const horariosPermitidos = [
+            "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", 
+            "12:00", "13:00", "13:30", "14:00", "14:30", "15:00", 
+            "15:30", "16:00", "16:30", "17:00", "17:30", "18:00"
+        ];
 
         if (!horariosPermitidos.includes(time)) {
 
@@ -637,14 +641,14 @@ app.get('/api/appointments/booked/:date', async (req, res) => {
     try {
         const { data, error } = await supabase
             .from('appointments')
-            .select('time')
-            .eq('date', date)
-            .neq('status', 'cancelado');
+            .select('appointment_time')
+            .eq('appointment_date', date)
+            .in('status', ['pending', 'confirmed']);
 
         if (error) throw error;
 
         // Extrai apenas a string do horário (ex: "14:00")
-        const bookedTimes = data.map(ag => ag.time.slice(0, 5));
+        const bookedTimes = data.map(ag => ag.appointment_time.slice(0, 5));
         res.json(bookedTimes);
     } catch (error) {
         res.status(500).json({ error: error.message });

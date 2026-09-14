@@ -48,10 +48,10 @@ a {
 
 
 button,
-input {
+input,
+select {
     font-family: inherit;
 }
-
 
 
 /* =========================================================
@@ -80,7 +80,6 @@ input {
         0.35s cubic-bezier(.4, 0, .2, 1);
 
 }
-
 
 
 /* =========================================================
@@ -124,9 +123,7 @@ input {
 
 
 .sidebar:hover {
-
     width: 230px;
-
 }
 
 
@@ -149,14 +146,11 @@ input {
     height: auto;
 
     object-fit: contain;
-
 }
 
 
 .sidebar-inner {
-
     width: 100%;
-
 }
 
 
@@ -175,7 +169,6 @@ input {
     margin-bottom: 25px;
 
     white-space: nowrap;
-
 }
 
 
@@ -186,7 +179,6 @@ input {
     flex-direction: column;
 
     gap: 8px;
-
 }
 
 
@@ -219,7 +211,6 @@ input {
     font-size: 10px;
 
     min-width: 25px;
-
 }
 
 
@@ -244,7 +235,6 @@ input {
     opacity: 1;
 
     transform: translateX(0);
-
 }
 
 
@@ -254,9 +244,7 @@ input {
 
     background:
         rgba(205, 166, 107, 0.1);
-
 }
-
 
 
 /* =========================================================
@@ -275,7 +263,8 @@ input {
     width: 48px;
     height: 48px;
 
-    border: 1px solid
+    border:
+        1px solid
         rgba(205, 166, 107, .4);
 
     background: var(--wine-dark);
@@ -287,9 +276,7 @@ input {
     z-index: 3000;
 
     cursor: pointer;
-
 }
-
 
 
 /* =========================================================
@@ -332,7 +319,6 @@ section {
     margin-bottom: 18px;
 
 }
-
 
 
 /* =========================================================
@@ -428,7 +414,6 @@ section {
 }
 
 
-
 /* =========================================================
    CARROSSEL
 ========================================================= */
@@ -472,17 +457,22 @@ section {
 @keyframes fade {
 
     from {
+
         opacity: .2;
+
         transform: scale(1.02);
+
     }
 
     to {
+
         opacity: 1;
+
         transform: scale(1);
+
     }
 
 }
-
 
 
 /* =========================================================
@@ -582,7 +572,6 @@ section {
 }
 
 
-
 /* =========================================================
    EXPERIÊNCIA
 ========================================================= */
@@ -649,7 +638,6 @@ section {
     font-size: 13px;
 
 }
-
 
 
 /* =========================================================
@@ -779,16 +767,22 @@ section {
 }
 
 
+/* =========================================================
+   CAMPOS DO FORMULÁRIO
+========================================================= */
+
 .form-group input[type="text"],
 .form-group input[type="tel"],
 .form-group input[type="date"],
-.form-group input[type="time"] {
+.form-group input[type="time"],
+.form-group select {
 
     width: 100%;
 
     padding: 14px 15px;
 
-    border: 1px solid #D5C4B6;
+    border:
+        1px solid #D5C4B6;
 
     background: #FFFDFC;
 
@@ -800,10 +794,21 @@ section {
 
     transition: var(--transition);
 
+    font-family: inherit;
+
+    font-size: 14px;
+
+    box-sizing: border-box;
+
 }
 
 
-.form-group input:focus {
+/* =========================================================
+   FOCO DOS CAMPOS
+========================================================= */
+
+.form-group input:focus,
+.form-group select:focus {
 
     border-color: var(--gold);
 
@@ -813,6 +818,102 @@ section {
 
 }
 
+
+/* =========================================================
+   SELECT DE HORÁRIO
+========================================================= */
+
+.form-group select {
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    -moz-appearance: none;
+
+    cursor: pointer;
+
+    min-height: 48px;
+
+    padding-right: 45px;
+
+    background-color: #FFFDFC;
+
+    background-image:
+        linear-gradient(
+            45deg,
+            transparent 50%,
+            var(--wine-dark) 50%
+        ),
+        linear-gradient(
+            135deg,
+            var(--wine-dark) 50%,
+            transparent 50%
+        );
+
+    background-position:
+        calc(100% - 20px) 21px,
+        calc(100% - 14px) 21px;
+
+    background-size:
+        6px 6px,
+        6px 6px;
+
+    background-repeat: no-repeat;
+
+}
+
+
+/* =========================================================
+   SELECT DESABILITADO
+========================================================= */
+
+.form-group select:disabled {
+
+    opacity: .65;
+
+    cursor: not-allowed;
+
+    background-color: #F3EEE9;
+
+    color: #806E61;
+
+}
+
+
+/* =========================================================
+   OPÇÕES DO SELECT
+========================================================= */
+
+.form-group select option {
+
+    background: #FFFDFC;
+
+    color: var(--wine-dark);
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    padding: 10px;
+
+}
+
+
+/* =========================================================
+   HOVER DO SELECT
+========================================================= */
+
+.form-group select:not(:disabled):hover {
+
+    border-color: var(--gold);
+
+}
+
+
+/* =========================================================
+   LINHA DO FORMULÁRIO
+========================================================= */
 
 .form-row {
 
@@ -825,6 +926,10 @@ section {
 
 }
 
+
+/* =========================================================
+   CHECKBOXES
+========================================================= */
 
 .service-checkboxes {
 
@@ -848,7 +953,8 @@ section {
 
     padding: 12px;
 
-    border: 1px solid #D5C4B6;
+    border:
+        1px solid #D5C4B6;
 
     cursor: pointer;
 
@@ -872,6 +978,10 @@ section {
 
 }
 
+
+/* =========================================================
+   BOTÃO
+========================================================= */
 
 .submit-button {
 
@@ -929,7 +1039,6 @@ section {
 }
 
 
-
 /* =========================================================
    MENSAGEM DO AGENDAMENTO
 ========================================================= */
@@ -957,7 +1066,8 @@ section {
 
     color: #285E35;
 
-    border-left: 3px solid #4D965D;
+    border-left:
+        3px solid #4D965D;
 
 }
 
@@ -970,10 +1080,10 @@ section {
 
     color: #7C2727;
 
-    border-left: 3px solid #A84545;
+    border-left:
+        3px solid #A84545;
 
 }
-
 
 
 /* =========================================================
@@ -1098,7 +1208,6 @@ footer {
     font-size: 11px;
 
 }
-
 
 
 /* =========================================================
@@ -1371,7 +1480,6 @@ footer {
 }
 
 
-
 /* =========================================================
    RESPONSIVO
 ========================================================= */
@@ -1475,7 +1583,6 @@ footer {
     }
 
 }
-
 
 
 @media (max-width: 650px) {

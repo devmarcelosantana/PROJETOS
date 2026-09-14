@@ -2,30 +2,51 @@
    CONFIGURAÇÃO DA API
 ========================================================= */
 
-/*
-    Durante o desenvolvimento:
-
-    backend:
-    http://localhost:3000
-
-    Se futuramente frontend e backend estiverem
-    hospedados no mesmo domínio, podemos trocar
-    para simplesmente "/api".
-*/
-
 const API_URL =
-    window.location.hostname === "localhost" ||
-        window.location.hostname === "127.0.0.1"
+    "https://supabase-studio-mari-api.qc3krt.easypanel.host/api";
 
-        ? "http://localhost:3000/api"
 
-        : "/api";
 
-// Dias de atendimento permitidos (1 = Segunda, 2 = Terça, 3 = Quarta, 4 = Quinta, 5 = Sexta, 6 = Sábado, 0 = Domingo)
-const DIAS_FUNCIONAMENTO = [2, 3, 4, 5, 6]; // Ajuste aqui caso trabalhe no sábado (6) ou não
+/* =========================================================
+   CONFIGURAÇÕES DO STUDIO
+========================================================= */
 
-// Horários de atendimento disponíveis no estúdio
-const HORARIOS_DISPONIVEIS = ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00"]; // Adicione ou remova horários conforme necessário
+// Dias de funcionamento
+// 0 = Domingo
+// 1 = Segunda
+// 2 = Terça
+// 3 = Quarta
+// 4 = Quinta
+// 5 = Sexta
+// 6 = Sábado
+
+const DIAS_FUNCIONAMENTO = [2, 3, 4, 5, 6];
+
+
+// Horários disponíveis no Studio
+
+const HORARIOS_DISPONIVEIS = [
+    "09:00",
+    "09:30",
+    "10:00",
+    "10:30",
+    "11:00",
+    "11:30",
+    "12:00",
+    "13:00",
+    "13:30",
+    "14:00",
+    "14:30",
+    "15:00",
+    "15:30",
+    "16:00",
+    "16:30",
+    "17:00",
+    "17:30",
+    "18:00"
+];
+
+
 
 /* =========================================================
    CARROSSEL
@@ -148,9 +169,11 @@ function initServicesMenu() {
             "active"
         );
 
+
         servicesOverlay.classList.add(
             "active"
         );
+
 
         document.body.classList.add(
             "services-open"
@@ -168,9 +191,11 @@ function initServicesMenu() {
             "active"
         );
 
+
         servicesOverlay.classList.remove(
             "active"
         );
+
 
         document.body.classList.remove(
             "services-open"
@@ -395,19 +420,23 @@ function initPhoneMask() {
                         "($1) $2"
                     );
 
+
                 value =
                     value.replace(
                         /(\d{4})(\d)/,
                         "$1-$2"
                     );
 
-            } else {
+            }
+
+            else {
 
                 value =
                     value.replace(
                         /^(\d{2})(\d)/,
                         "($1) $2"
                     );
+
 
                 value =
                     value.replace(
@@ -471,6 +500,7 @@ function initDateField() {
         `${year}-${month}-${day}`;
 
 
+    // Impede escolher datas anteriores
     dateInput.min =
         todayString;
 
@@ -479,32 +509,88 @@ function initDateField() {
         "change",
         () => {
 
-            if (!dateInput.value) {
+            const dataSelecionada =
+                dateInput.value;
+
+
+            if (!dataSelecionada) {
+
+                resetarHorarios();
+
                 return;
+
             }
 
 
             const selectedDate =
                 new Date(
-                    `${dateInput.value}T12:00:00`
+                    `${dataSelecionada}T12:00:00`
                 );
 
 
-            const weekday = selectedDate.getDay();
+            const weekday =
+                selectedDate.getDay();
 
-            if (!DIAS_FUNCIONAMENTO.includes(weekday)) {
+
+            if (
+                !DIAS_FUNCIONAMENTO.includes(
+                    weekday
+                )
+            ) {
+
                 dateInput.value = "";
+
+
+                resetarHorarios();
+
+
                 showAppointmentMessage(
                     "error",
-                    "Nosso estúdio não abre neste dia da semana. Escolha um dia útil válido."
+                    "Nosso estúdio não abre neste dia da semana. Escolha um dia válido."
                 );
+
+
                 return;
-            };
 
             }
 
+
+            verificarDisponibilidade();
+
         }
     );
+
+}
+
+
+
+/* =========================================================
+   RESETAR HORÁRIOS
+========================================================= */
+
+function resetarHorarios() {
+
+    const selectHorario =
+        document.getElementById(
+            "horario"
+        );
+
+
+    if (!selectHorario) {
+
+        return;
+
+    }
+
+
+    selectHorario.innerHTML = `
+        <option value="">
+            Escolha uma data primeiro
+        </option>
+    `;
+
+
+    selectHorario.disabled = true;
 
 }
 
@@ -536,13 +622,232 @@ function showAppointmentMessage(
         "appointment-message";
 
 
-    messageElement.classList.add(
-        type
-    );
+    if (type) {
+
+        messageElement.classList.add(
+            type
+        );
+
+    }
 
 
     messageElement.textContent =
         message;
+
+}
+
+
+
+/* =========================================================
+   VERIFICAR DISPONIBILIDADE
+========================================================= */
+
+async function verificarDisponibilidade() {
+
+    const dateInput =
+        document.getElementById(
+            "data"
+        );
+
+
+    const selectHorario =
+        document.getElementById(
+            "horario"
+        );
+
+
+    if (
+        !dateInput ||
+        !selectHorario
+    ) {
+
+        return;
+
+    }
+
+
+    const dataSelecionada =
+        dateInput.value;
+
+
+    // Nenhuma data
+    if (!dataSelecionada) {
+
+        resetarHorarios();
+
+        return;
+
+    }
+
+
+    // Estado de carregamento
+    selectHorario.disabled = true;
+
+
+    selectHorario.innerHTML = `
+        <option value="">
+            Buscando horários...
+        </option>
+    `;
+
+
+    try {
+
+
+        const response =
+            await fetch(
+                `${API_URL}/appointments/booked/${dataSelecionada}`,
+                {
+                    method: "GET",
+                    headers: {
+                        "Accept":
+                            "application/json"
+                    }
+                }
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                `Erro HTTP ${response.status}`
+            );
+
+        }
+
+
+        const horariosOcupados =
+            await response.json();
+
+
+        console.log(
+            "Horários ocupados:",
+            horariosOcupados
+        );
+
+
+        // Garantir que seja array
+        const ocupados =
+            Array.isArray(
+                horariosOcupados
+            )
+                ? horariosOcupados
+                : [];
+
+
+        // Limpar
+        selectHorario.innerHTML = `
+            <option value="">
+                Selecione um horário
+            </option>
+        `;
+
+
+        let temHorarioLivre =
+            false;
+
+
+        HORARIOS_DISPONIVEIS.forEach(
+            horario => {
+
+
+                // Normalizar horário
+                const horarioNormalizado =
+                    String(
+                        horario
+                    ).substring(0, 5);
+
+
+                const ocupado =
+                    ocupados.some(
+                        item =>
+                            String(item)
+                                .substring(0, 5) ===
+                            horarioNormalizado
+                    );
+
+
+                if (!ocupado) {
+
+
+                    const option =
+                        document.createElement(
+                            "option"
+                        );
+
+
+                    option.value =
+                        horarioNormalizado;
+
+
+                    option.textContent =
+                        horarioNormalizado;
+
+
+                    selectHorario.appendChild(
+                        option
+                    );
+
+
+                    temHorarioLivre =
+                        true;
+
+                }
+
+            }
+        );
+
+
+        if (!temHorarioLivre) {
+
+            selectHorario.innerHTML = `
+                <option value="">
+                    Agenda lotada neste dia
+                </option>
+            `;
+
+
+            selectHorario.disabled =
+                true;
+
+
+            return;
+
+        }
+
+
+        selectHorario.disabled =
+            false;
+
+
+    }
+
+    catch (error) {
+
+
+        console.error(
+            "Erro ao verificar disponibilidade:",
+            error
+        );
+
+
+        selectHorario.innerHTML = `
+            <option value="">
+                Erro ao carregar horários
+            </option>
+        `;
+
+
+        selectHorario.disabled =
+            true;
+
+
+        showAppointmentMessage(
+            "error",
+            "Não foi possível consultar os horários disponíveis. Tente novamente."
+        );
+
+    }
 
 }
 
@@ -588,27 +893,35 @@ function initAppointmentForm() {
 
             const name =
                 document
-                    .getElementById("nome")
+                    .getElementById(
+                        "nome"
+                    )
                     .value
                     .trim();
 
 
             const phone =
                 document
-                    .getElementById("telefone")
+                    .getElementById(
+                        "telefone"
+                    )
                     .value
                     .trim();
 
 
             const date =
                 document
-                    .getElementById("data")
+                    .getElementById(
+                        "data"
+                    )
                     .value;
 
 
             const time =
                 document
-                    .getElementById("horario")
+                    .getElementById(
+                        "horario"
+                    )
                     .value;
 
 
@@ -692,7 +1005,7 @@ function initAppointmentForm() {
 
 
             /* -------------------------------------------
-               IMPEDIR FIM DE SEMANA
+               VALIDAR DIA
             -------------------------------------------- */
 
             const selectedDate =
@@ -706,13 +1019,14 @@ function initAppointmentForm() {
 
 
             if (
-                weekday === 0 ||
-                weekday === 6
+                !DIAS_FUNCIONAMENTO.includes(
+                    weekday
+                )
             ) {
 
                 showAppointmentMessage(
                     "error",
-                    "Escolha um dia de segunda a sexta-feira."
+                    "Nosso estúdio não abre neste dia da semana."
                 );
 
                 return;
@@ -734,6 +1048,7 @@ function initAppointmentForm() {
 
             try {
 
+
                 const response =
                     await fetch(
                         `${API_URL}/appointments`,
@@ -742,23 +1057,48 @@ function initAppointmentForm() {
 
                             headers: {
                                 "Content-Type":
+                                    "application/json",
+
+                                "Accept":
                                     "application/json"
                             },
 
                             body:
                                 JSON.stringify({
-                                    name,
-                                    phone,
-                                    date,
-                                    time,
-                                    services
+                                    name:
+                                        name,
+
+                                    phone:
+                                        phone,
+
+                                    date:
+                                        date,
+
+                                    time:
+                                        time,
+
+                                    services:
+                                        services
                                 })
                         }
                     );
 
 
-                const result =
-                    await response.json();
+                let result = {};
+
+
+                try {
+
+                    result =
+                        await response.json();
+
+                }
+
+                catch {
+
+                    result = {};
+
+                }
 
 
                 /* ---------------------------------------
@@ -794,32 +1134,31 @@ function initAppointmentForm() {
 
 
                 const formattedDate =
-                    date.split("-").reverse().join("/");
+                    date
+                        .split("-")
+                        .reverse()
+                        .join("/");
 
 
                 const whatsappMessage =
-                    `Olá! Acabei de solicitar um agendamento no Studio Mari Pisani.%0A%0A` +
+                    `Olá! Acabei de solicitar um agendamento no Studio Mari Pisani.\n\n` +
 
-                    `*Nome:* ${encodeURIComponent(name)}%0A` +
+                    `*Nome:* ${name}\n` +
 
-                    `*Telefone:* ${encodeURIComponent(phone)}%0A` +
+                    `*Telefone:* ${phone}\n` +
 
-                    `*Data:* ${formattedDate}%0A` +
+                    `*Data:* ${formattedDate}\n` +
 
-                    `*Horário:* ${encodeURIComponent(time)}%0A` +
+                    `*Horário:* ${time}\n` +
 
-                    `*Serviços:* ${encodeURIComponent(services.join(", "))}`;
+                    `*Serviços:* ${services.join(", ")}`;
 
 
                 const whatsappURL =
-                    `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+                    `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+                        whatsappMessage
+                    )}`;
 
-
-                /*
-                    Pequeno atraso para que a mensagem
-                    de sucesso seja exibida antes de
-                    abrir o WhatsApp.
-                */
 
                 setTimeout(
                     () => {
@@ -842,13 +1181,51 @@ function initAppointmentForm() {
                 form.reset();
 
 
-                initDateField();
+                resetarHorarios();
+
+
+                // Reaplicar data mínima
+                const dateInput =
+                    document.getElementById(
+                        "data"
+                    );
+
+
+                if (dateInput) {
+
+                    const today =
+                        new Date();
+
+
+                    const year =
+                        today.getFullYear();
+
+
+                    const month =
+                        String(
+                            today.getMonth() + 1
+                        ).padStart(2, "0");
+
+
+                    const day =
+                        String(
+                            today.getDate()
+                        ).padStart(2, "0");
+
+
+                    dateInput.min =
+                        `${year}-${month}-${day}`;
+
+                }
+
 
             }
 
             catch (error) {
 
+
                 console.error(
+                    "Erro ao registrar agendamento:",
                     error
                 );
 
@@ -861,10 +1238,12 @@ function initAppointmentForm() {
 
             }
 
+
             finally {
 
                 submitButton.disabled =
                     false;
+
 
                 submitButton.textContent =
                     "SOLICITAR AGENDAMENTO";
@@ -898,51 +1277,7 @@ window.addEventListener(
 
         initAppointmentForm();
 
+        resetarHorarios();
+
     }
-
-
 );
-
-/* =========================================================
-VERIFICAR DISPONIBILIDADE DE HORÁRIOS
-========================================================= */
-
-const horariosAtendimento = ["09:00", "10:00", "11:30", "14:00", "15:30", "17:00"];
-
-async function verificarDisponibilidade() {
-const dataSelecionada = document.getElementById("data").value;
-const selectHorario = document.getElementById("horario");
-
-if (!dataSelecionada) {
-    selectHorario.innerHTML = "Escolha uma data primeiro";
-    return;
-}
-
-selectHorario.innerHTML = "Buscando horários...";
-
-try {
-    const res = await fetch(API_URL + "/appointments/booked/" + dataSelecionada);
-    const horariosOcupados = await res.json();
-
-    selectHorario.innerHTML = "Selecione um horário";
-    let temHorarioLivre = false;
-
-    horariosAtendimento.forEach(function(horario) {
-        if (!horariosOcupados.includes(horario)) {
-            const option = document.createElement("option");
-            option.value = horario;
-            option.textContent = horario;
-            selectHorario.appendChild(option);
-            temHorarioLivre = true;
-        }
-    });
-
-    if (!temHorarioLivre) {
-        selectHorario.innerHTML = "Agenda lotada neste dia";
-    }
-
-} catch (error) {
-    console.error("Erro ao verificar disponibilidade:", error);
-    selectHorario.innerHTML = "Erro ao carregar horários";
-}
-}
