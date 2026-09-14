@@ -15,7 +15,7 @@
 
 const API_URL =
     window.location.hostname === "localhost" ||
-    window.location.hostname === "127.0.0.1"
+        window.location.hostname === "127.0.0.1"
 
         ? "http://localhost:3000/api"
 
@@ -901,4 +901,50 @@ window.addEventListener(
         initAppointmentForm();
 
     }
+
+
 );
+
+/* =========================================================
+VERIFICAR DISPONIBILIDADE DE HORÁRIOS
+========================================================= */
+
+const horariosAtendimento = ["09:00", "10:00", "11:30", "14:00", "15:30", "17:00"];
+
+async function verificarDisponibilidade() {
+const dataSelecionada = document.getElementById("data").value;
+const selectHorario = document.getElementById("horario");
+
+if (!dataSelecionada) {
+    selectHorario.innerHTML = "Escolha uma data primeiro";
+    return;
+}
+
+selectHorario.innerHTML = "Buscando horários...";
+
+try {
+    const res = await fetch(API_URL + "/appointments/booked/" + dataSelecionada);
+    const horariosOcupados = await res.json();
+
+    selectHorario.innerHTML = "Selecione um horário";
+    let temHorarioLivre = false;
+
+    horariosAtendimento.forEach(function(horario) {
+        if (!horariosOcupados.includes(horario)) {
+            const option = document.createElement("option");
+            option.value = horario;
+            option.textContent = horario;
+            selectHorario.appendChild(option);
+            temHorarioLivre = true;
+        }
+    });
+
+    if (!temHorarioLivre) {
+        selectHorario.innerHTML = "Agenda lotada neste dia";
+    }
+
+} catch (error) {
+    console.error("Erro ao verificar disponibilidade:", error);
+    selectHorario.innerHTML = "Erro ao carregar horários";
+}
+}

@@ -620,6 +620,27 @@ app.put('/api/appointments/:id/status', async (req, res) => {
     }
 });
 
+// GET: Retorna os horários ocupados em uma data específica
+app.get('/api/appointments/booked/:date', async (req, res) => {
+    const { date } = req.params;
+    
+    try {
+        const { data, error } = await supabase
+            .from('appointments')
+            .select('time')
+            .eq('date', date)
+            .neq('status', 'cancelado');
+
+        if (error) throw error;
+
+        // Extrai apenas a string do horário (ex: "14:00")
+        const bookedTimes = data.map(ag => ag.time.slice(0, 5));
+        res.json(bookedTimes);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 app.listen(
     PORT,
     "0.0.0.0",
