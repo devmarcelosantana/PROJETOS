@@ -193,7 +193,7 @@ app.post("/api/appointments", async (req, res) => {
 
         /*
         |--------------------------------------------------------------------------
-        | VALIDAÇÃO DA DATA
+        | VALIDAÇÃO DA DATA E DIAS DE FUNCIONAMENTO
         |--------------------------------------------------------------------------
         */
 
@@ -214,22 +214,18 @@ app.post("/api/appointments", async (req, res) => {
 
         }
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | NÃO PERMITIR DOMINGO
-        |--------------------------------------------------------------------------
-        */
-
         const dayOfWeek =
             appointmentDate.getDay();
 
-        if (dayOfWeek === 0) {
+        // Dias de funcionamento permitidos (1 = Segunda a 6 = Sábado)
+        const diasPermitidos = [1, 2, 3, 4, 5, 6];
+
+        if (!diasPermitidos.includes(dayOfWeek)) {
 
             return res.status(400).json({
                 success: false,
                 message:
-                    "Não é possível realizar agendamento aos domingos."
+                    "O Studio Mari Pisani não realiza agendamentos neste dia da semana."
             });
 
         }
@@ -237,7 +233,7 @@ app.post("/api/appointments", async (req, res) => {
 
         /*
         |--------------------------------------------------------------------------
-        | VALIDAR HORÁRIO
+        | VALIDAR HORÁRIO E HORÁRIOS DE FUNCIONAMENTO
         |--------------------------------------------------------------------------
         */
 
@@ -250,6 +246,19 @@ app.post("/api/appointments", async (req, res) => {
                 success: false,
                 message:
                     "Horário inválido."
+            });
+
+        }
+
+        // Horários permitidos de atendimento
+        const horariosPermitidos = ["09:00", "10:00", "11:30", "14:00", "15:30", "17:00"];
+
+        if (!horariosPermitidos.includes(time)) {
+
+            return res.status(400).json({
+                success: false,
+                message:
+                    "O horário escolhido é inválido para atendimento."
             });
 
         }

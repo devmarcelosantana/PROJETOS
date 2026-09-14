@@ -21,7 +21,11 @@ const API_URL =
 
         : "/api";
 
+// Dias de atendimento permitidos (1 = Segunda, 2 = Terça, 3 = Quarta, 4 = Quinta, 5 = Sexta, 6 = Sábado, 0 = Domingo)
+const DIAS_FUNCIONAMENTO = [2, 3, 4, 5, 6]; // Ajuste aqui caso trabalhe no sábado (6) ou não
 
+// Horários de atendimento disponíveis no estúdio
+const HORARIOS_DISPONIVEIS = ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00"]; // Adicione ou remova horários conforme necessário
 
 /* =========================================================
    CARROSSEL
@@ -486,22 +490,16 @@ function initDateField() {
                 );
 
 
-            const weekday =
-                selectedDate.getDay();
+            const weekday = selectedDate.getDay();
 
-
-            if (
-                weekday === 0 ||
-                weekday === 6
-            ) {
-
+            if (!DIAS_FUNCIONAMENTO.includes(weekday)) {
                 dateInput.value = "";
-
-
                 showAppointmentMessage(
                     "error",
-                    "Os agendamentos estão disponíveis somente de segunda a sexta-feira."
+                    "Nosso estúdio não abre neste dia da semana. Escolha um dia útil válido."
                 );
+                return;
+            };
 
             }
 
